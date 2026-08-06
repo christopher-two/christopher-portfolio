@@ -6,8 +6,14 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
 ---
 
 <header class="site-header">
+  <div class="theme-switcher" role="group" aria-label="Tema visual">
+    <span class="theme-label">Tema</span>
+    <button class="theme-option" type="button" data-theme-choice="black" aria-pressed="false">Black</button>
+    <button class="theme-option" type="button" data-theme-choice="white" aria-pressed="false">White</button>
+  </div>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
   <nav id="main-nav" class="nav-links" aria-label="Navegación principal">
+    <a class="nav-home" href="/landing" aria-label="Ir al inicio">Inicio</a>
     <div class="nav-item">
       <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="work-preview">Trabajo <span aria-hidden="true">↘</span></button>
       <div id="work-preview" class="nav-panel nav-panel-work">
@@ -60,9 +66,38 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
 </header>
 
 <script>
+  type Theme = 'black' | 'white';
+
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const nav = document.querySelector<HTMLElement>('#main-nav');
   const items = document.querySelectorAll<HTMLElement>('.nav-item');
+  const themeButtons = document.querySelectorAll<HTMLButtonElement>('[data-theme-choice]');
+  const isTheme = (value: string | undefined): value is Theme => value === 'black' || value === 'white';
+
+  const applyTheme = (theme: Theme) => {
+    document.documentElement.dataset.theme = theme;
+    themeButtons.forEach((button) => {
+      const isActive = button.dataset.themeChoice === theme;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'black' ? '#0d0d0d' : '#f7f7f5');
+    try {
+      localStorage.setItem('portfolio-theme', theme);
+    } catch {
+      // The theme still applies when storage is unavailable.
+    }
+  };
+
+  themeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const theme = button.dataset.themeChoice;
+      if (isTheme(theme)) applyTheme(theme);
+    });
+  });
+
+  const initialTheme = document.documentElement.dataset.theme;
+  applyTheme(isTheme(initialTheme) ? initialTheme : 'white');
 
   toggle?.addEventListener('click', () => {
     const isOpen = nav?.classList.toggle('is-open') ?? false;
@@ -71,6 +106,18 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
 
   items.forEach((item) => {
     const trigger = item.querySelector<HTMLButtonElement>('.nav-trigger');
+    item.addEventListener('focusin', () => trigger?.setAttribute('aria-expanded', 'true'));
+    item.addEventListener('focusout', (event) => {
+      if (!(event.relatedTarget instanceof Node) || !item.contains(event.relatedTarget)) {
+        if (!item.classList.contains('is-open')) trigger?.setAttribute('aria-expanded', 'false');
+      }
+    });
+    item.addEventListener('mouseenter', () => trigger?.setAttribute('aria-expanded', 'true'));
+    item.addEventListener('mouseleave', () => {
+      if (!item.classList.contains('is-open') && !item.contains(document.activeElement)) {
+        trigger?.setAttribute('aria-expanded', 'false');
+      }
+    });
     trigger?.addEventListener('click', () => {
       const isOpen = item.classList.toggle('is-open');
       trigger.setAttribute('aria-expanded', String(isOpen));

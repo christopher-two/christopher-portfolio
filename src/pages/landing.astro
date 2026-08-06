@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectRow from '../components/ProjectRow.astro';
-import HeroAnimation from '../components/HeroAnimation.astro';
+import HeroShader from '../components/HeroShader';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
 import profileImage from '../assets/images/IMG_6195.jpg';
 import { siteUrl } from '../data/site';
@@ -66,7 +66,8 @@ const landingSchema = [
 ---
 
 <BaseLayout title="Christopher Two · Software que llega a producción" description="Portfolio de Christopher Two: productos multiplataforma con Kotlin, Android, Astro, IA y Cloudflare." schema={landingSchema}>
-  <section class="hero">
+  <section class="hero landing-hero">
+    <div class="hero-shader" aria-hidden="true"><HeroShader client:load /></div>
     <div class="wrap hero-grid">
       <div class="hero-content">
         <span class="eyebrow">Desarrollador multiplataforma · Uruapan, MX</span>
@@ -76,14 +77,13 @@ const landingSchema = [
           <a class="button button-ghost" href="#contact">Hablemos ↓</a>
         </div>
       </div>
-      <HeroAnimation />
     </div>
   </section>
 
   <div class="ticker" aria-label="Tecnologías">
     <div class="ticker-track">
       {['Kotlin Multiplatform', 'Jetpack Compose', 'Astro', 'Cloudflare', 'Clean Architecture', 'IA On-Device', 'Ktor', 'Supabase'].map((item) => <span>{item}</span>)}
-      {['Kotlin Multiplatform', 'Jetpack Compose', 'Astro', 'Cloudflare', 'Clean Architecture', 'IA On-Device', 'Ktor', 'Supabase'].map((item) => <span>{item}</span>)}
+      {['Kotlin Multiplatform', 'Jetpack Compose', 'Astro', 'Cloudflare', 'Clean Architecture', 'IA On-Device', 'Ktor', 'Supabase'].map((item) => <span aria-hidden="true">{item}</span>)}
     </div>
   </div>
 

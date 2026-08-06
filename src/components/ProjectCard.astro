@@ -1,5 +1,5 @@
 ---
-import type { Project } from '../data/portfolio';
+import { getProjectTechFilters, type Project } from '../data/portfolio';
 
 interface Props {
   project: Project;
@@ -9,7 +9,7 @@ interface Props {
 const { project, index } = Astro.props;
 ---
 
-<a class="project-card" href={`/projects/${project.slug}`}>
+<a class="project-card" href={`/projects/${project.slug}`} data-project-tags={getProjectTechFilters(project).join('|')}>
   <div class="project-card-top">
     <span>{String(index + 1).padStart(2, '0')} / case study</span>
     <span>{project.categories?.[0] ?? 'Producto'}</span>

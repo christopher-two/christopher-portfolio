@@ -34,8 +34,8 @@ const projectsSchema = [
       <h1 class="section-title">Trabajo que dejó el laboratorio.</h1>
       <p>Productos móviles, plataformas web, herramientas internas y experimentos. Cada proyecto es una decisión de ingeniería contada desde el resultado.</p>
       <div class="filter-row" aria-label="Tecnologías utilizadas">
-        <span class="filter filter-active">Todos</span>
-        {filters.map((filter) => <span class="filter">{filter}</span>)}
+        <button class="filter filter-active" type="button" data-project-filter="all" aria-pressed="true">Todos</button>
+        {filters.map((filter) => <button class="filter" type="button" data-project-filter={filter} aria-pressed="false">{filter}</button>)}
       </div>
     </div>
   </section>
@@ -44,4 +44,25 @@ const projectsSchema = [
       {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
     </div>
   </section>
+  <script>
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('[data-project-filter]');
+    const projectCards = document.querySelectorAll<HTMLElement>('[data-project-tags]');
+
+    const updateProjectFilter = (selectedFilter: string) => {
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.projectFilter === selectedFilter;
+        button.classList.toggle('filter-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+
+      projectCards.forEach((card) => {
+        const tags = card.dataset.projectTags?.split('|') ?? [];
+        card.hidden = selectedFilter !== 'all' && !tags.includes(selectedFilter);
+      });
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => updateProjectFilter(button.dataset.projectFilter ?? 'all'));
+    });
+  </script>
 </BaseLayout>
