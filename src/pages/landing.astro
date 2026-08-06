@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
-import profileImage from '../assets/images/IMG_6195.jpg';
 import { siteUrl } from '../data/site';
 
 const homeProjects = projects.slice(0, 10);
@@ -87,10 +86,6 @@ const landingSchema = [
 
   <section class="section presentation-section" id="about">
     <div class="wrap presentation-grid">
-      <div class="presentation-visual">
-        <img src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" width="725" height="967" loading="lazy" />
-        <span class="presentation-stamp">Kotlin<br />+ Astro<br />+ ideas</span>
-      </div>
       <div class="presentation-copy">
         <span class="eyebrow">La persona detrás del código</span>
         <h2 class="section-title">Hola, soy Christopher.</h2>
