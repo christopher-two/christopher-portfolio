@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectRow from '../components/ProjectRow.astro';
-import HeroShader from '../components/HeroShader';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
 import profileImage from '../assets/images/IMG_6195.jpg';
 import { siteUrl } from '../data/site';
@@ -67,7 +66,6 @@ const landingSchema = [
 
 <BaseLayout title="Christopher Two · Software que llega a producción" description="Portfolio de Christopher Two: productos multiplataforma con Kotlin, Android, Astro, IA y Cloudflare." schema={landingSchema}>
   <section class="hero landing-hero">
-    <div class="hero-shader" aria-hidden="true"><HeroShader client:load /></div>
     <div class="wrap hero-grid">
       <div class="hero-content">
         <span class="eyebrow">Desarrollador multiplataforma · Uruapan, MX</span>

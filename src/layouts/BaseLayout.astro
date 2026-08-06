@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import HeroShader from '../components/HeroShader';
 import profileImage from '../assets/images/IMG_6195.jpg';
 import { authorSchema, siteDescription, siteName, siteUrl } from '../data/site';
 import '../styles/global.css';
@@ -98,12 +99,15 @@ const jsonLd = {
       FORM: Monochrome editorial index, assigned direction 4, seed f62ae0ba; motion is a page entering and settling into place.
       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
     -->
+    <div class="site-background" aria-hidden="true"><HeroShader client:load /></div>
     <a class="skip-link" href="#main-content">Saltar al contenido</a>
-    <Header />
-    <main id="main-content">
-      <slot />
-    </main>
-    <Footer />
+    <div class="site-content">
+      <Header />
+      <main id="main-content">
+        <slot />
+      </main>
+      <Footer />
+    </div>
     <script is:inline>
       const revealTargets = document.querySelectorAll(
         'main > section:not(.hero):not(.page-intro), main > article, .project-card, .project-row, .skill, .published-app, .recognition',

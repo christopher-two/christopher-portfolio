@@ -37,29 +37,23 @@ const { name, kicker, intro, sections, tone } = Astro.props;
 </section>
 
 <style>
-  .brand-page { position: relative; overflow: hidden; padding: 100px 0 120px; background: var(--surface); }
+  .brand-page { position: relative; overflow: hidden; padding: 100px 0 120px; background: transparent; }
   .brand-page::before { position: absolute; top: 25%; right: -12vw; width: 42vw; aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 50%; content: ''; pointer-events: none; }
   .brand-page .wrap { position: relative; z-index: 1; }
   .brand-page .display { max-width: 900px; margin-top: 24px; }
   .brand-intro { max-width: 600px; margin: 30px 0 80px; font-size: clamp(1.2rem, 3vw, 2rem); line-height: 1.15; }
   .brand-sections { display: flex; flex-direction: column; }
-  .brand-section { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 30px; align-items: center; min-height: 230px; border-top: var(--line); padding: 32px 0; }
-  .brand-section:last-child { border-bottom: var(--line); }
+  .brand-section { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 30px; align-items: center; min-height: 230px; padding: 48px 0; }
+  .brand-section:last-child { padding-bottom: 0; }
   .brand-letter { color: var(--ink); font-size: clamp(6rem, 16vw, 13rem); font-weight: 900; line-height: .7; letter-spacing: -.15em; }
   .brand-section h2 { margin: 12px 0; font-size: clamp(2.3rem, 5vw, 5.5rem); line-height: .85; letter-spacing: -.09em; }
   .brand-section p { max-width: 500px; margin: 0; font-size: 16px; line-height: 1.4; }
-  .brand-override { background: var(--contrast); color: var(--contrast-text); }
-  .brand-override .eyebrow::before { border-color: var(--contrast-text); }
-  .brand-override .brand-section { border-color: var(--contrast-text); }
-  .brand-override .brand-letter { color: var(--contrast-text); }
-  .brand-override .brand-section p { color: var(--contrast-muted); }
-  .brand-lumi { background: var(--paper); }
+  .brand-override, .brand-lumi, .brand-daelia, .brand-parse { background: transparent; color: var(--ink); }
+  .brand-override .brand-letter, .brand-lumi .brand-letter, .brand-daelia .brand-letter, .brand-parse .brand-letter { color: var(--ink); }
+  .brand-override .brand-section p, .brand-parse .brand-section p { color: var(--ink-soft); }
+  .brand-lumi { background: transparent; }
   .brand-lumi .brand-letter { color: var(--ink); }
-  .brand-daelia { background: var(--surface-deep); }
-  .brand-daelia .brand-section { border-color: var(--ink); }
-  .brand-parse { background: var(--ink); color: var(--paper); }
-  .brand-parse .eyebrow::before, .brand-parse .brand-section { border-color: var(--paper); }
-  .brand-parse .brand-letter { color: var(--paper); }
-  .brand-parse .brand-section p { color: var(--contrast-muted); }
+  .brand-daelia { background: transparent; }
+  .brand-parse { background: transparent; }
   @media (max-width: 767px) { .brand-section { grid-template-columns: 72px minmax(0, 1fr); gap: 18px; } .brand-letter { font-size: 5rem; } }
 </style>

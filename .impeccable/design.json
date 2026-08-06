@@ -64,14 +64,14 @@
       "name": "Hero Shader",
       "kind": "custom",
       "refersTo": "hero-shader",
-      "description": "A low-contrast black-and-white dithering field that adds a living paper texture behind the hero statement.",
-      "html": "<div class=\"ds-hero-shader\" aria-hidden=\"true\"></div>",
-      "css": ".ds-hero-shader { position: absolute; inset: 0; opacity: .14; background: #f7f7f5; pointer-events: none; }"
+      "description": "A low-contrast black-and-white dithering field that adds a living paper texture behind every route and shifts subtly with scroll.",
+      "html": "<div class=\"ds-site-background\" aria-hidden=\"true\"></div>",
+      "css": ".ds-site-background { position: fixed; inset: -14%; opacity: .1; background: #f7f7f5; pointer-events: none; transform: translate3d(var(--site-shader-x), var(--site-shader-y), 0) scale(1.08); }"
     }
   ],
   "narrative": {
     "northStar": "The Monochrome Proof Sheet",
-    "overview": "The portfolio behaves like a precise studio proof: white paper carries the reading experience, black ink establishes hierarchy, and rules mark the edges between ideas. Large typographic statements create the first impression while compact mono labels create an index that can be scanned quickly.",
+    "overview": "The portfolio behaves like a precise studio proof: a living monochrome paper field carries every route, black ink establishes hierarchy, and rules mark the edges between ideas. Large typographic statements create the first impression while compact mono labels create an index that can be scanned quickly.",
     "keyCharacteristics": ["White-dominant monochrome surfaces", "Heavy editorial display type", "Measured rules and square geometry", "Motion that settles into place"],
     "rules": [
       { "name": "The Ink-First Rule", "body": "Color never competes with the work; hierarchy comes from contrast, scale, and spacing.", "section": "colors" },

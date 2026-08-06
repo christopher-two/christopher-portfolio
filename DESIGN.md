@@ -90,7 +90,7 @@ The portfolio behaves like a precise studio proof: white paper carries the readi
 
 Large typographic statements create the first impression. Compact mono labels, numbered work, and measured borders create an index that can be scanned quickly. Motion is the physical act of a page settling into place: confident entrance, viewport reveals, and small directional responses on links.
 
-The landing hero adds a low-contrast monochrome dithering shader as a living paper field behind the statement. It is texture, not decoration: the shader gives the proof sheet a surface while the content remains the highest-contrast layer.
+The whole site carries a low-contrast monochrome dithering shader as a living paper field. It is texture, not decoration: its X/Y offset shifts subtly with scroll while the content remains the highest-contrast layer.
 
 **Key Characteristics:**
 - White-dominant monochrome surfaces with black structural contrast.
@@ -184,7 +184,7 @@ The form language is square and editorial: zero-radius geometry, one-pixel rules
 - **Entrance:** Hero content, illustration, and page introductions rise and settle with an exponential ease-out.
 - **Scroll reveal:** Project rows, cards, skills, and sections reveal once as they enter the viewport.
 - **Feedback:** Links and cards respond through underline, transform, tonal inversion, or ambient lift.
-- **Hero shader:** A black-and-white dithering field runs behind the landing statement, pauses when out of view, and becomes static for reduced motion.
+- **Site shader:** A black-and-white dithering field runs behind every route, shifts its X/Y offset with scroll, pauses when out of view, and becomes static for reduced motion.
 - **Accessibility:** `prefers-reduced-motion` disables authored motion and keeps all content visible.
 
 ## Do's and Don'ts
