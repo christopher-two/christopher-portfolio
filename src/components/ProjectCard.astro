@@ -17,7 +17,7 @@ const { project, index, coverImage } = Astro.props;
   </div>
   {coverImage && (
     <div class="project-card-media">
-      <img src={coverImage} width="800" height="450" alt={`Vista de ${project.title}`} loading={index < 4 ? 'eager' : 'lazy'} />
+      <img src={coverImage} alt={`Vista de ${project.title}`} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
     </div>
   )}
   <div>
