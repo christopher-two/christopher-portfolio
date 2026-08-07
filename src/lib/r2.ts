@@ -20,10 +20,14 @@ export async function getProjectMedia(folder: string, maxItems = 12): Promise<Pr
   if (!bucket || !folder) return [];
 
   for (const prefix of prefixesFor(folder)) {
-    const listing = await bucket.list({ prefix, limit: maxItems });
-    if (listing.objects.length === 0) continue;
+    const listing = await bucket.list({ prefix, limit: Math.min(1000, maxItems + 1) });
+    const mediaObjects = listing.objects.filter((object) => {
+      const key = object.key.toLowerCase();
+      return !object.key.endsWith('/') && /\.(avif|gif|jpe?g|png|svg|webp|mp4|webm)$/i.test(key);
+    });
+    if (mediaObjects.length === 0) continue;
 
-    return listing.objects.map((object) => ({
+    return mediaObjects.slice(0, maxItems).map((object) => ({
       key: object.key,
       url: `/api/r2-image?key=${encodeURIComponent(object.key)}`,
       description: object.key.split('/').pop() ?? object.key,
@@ -32,4 +36,9 @@ export async function getProjectMedia(folder: string, maxItems = 12): Promise<Pr
   }
 
   return [];
+}
+
+export async function getProjectCoverImage(folder: string): Promise<string> {
+  const [cover] = await getProjectMedia(folder, 1);
+  return cover?.url ?? '';
 }

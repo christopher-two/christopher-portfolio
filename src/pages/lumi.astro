@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandPage from '../components/BrandPage.astro';
+import { siteUrl } from '../data/site';
 
 const sections = [
   { letter: 'L', title: 'UZ', description: 'Iluminando ideas con simplicidad. Claridad en cada función.' },
@@ -8,8 +9,20 @@ const sections = [
   { letter: 'M', title: 'AGIA', description: 'La tecnología avanzada es indistinguible de la magia. Sorprende en cada interacción.' },
   { letter: 'I', title: 'NTELIGENCIA', description: 'Potenciando la creatividad humana con IA. Tus ideas, multiplicadas.' },
 ];
+
+const lumiSchema = [
+  {
+    '@type': 'CreativeWork',
+    '@id': `${siteUrl}/lumi#creative-work`,
+    name: 'Lumi',
+    url: `${siteUrl}/lumi`,
+    description: 'Generador de códigos QR impulsado por IA dentro del laboratorio de experimentos Daelia.',
+    creator: { '@id': `${siteUrl}/bio#person` },
+    isPartOf: { '@id': `${siteUrl}/daelia#page` },
+  },
+];
 ---
 
-<BaseLayout title="Lumi · Christopher Two" description="Lumi es un generador de códigos QR impulsado por IA dentro del laboratorio de experimentos Daelia.">
+<BaseLayout title="Lumi | IA y códigos QR" description="Lumi es un generador de códigos QR impulsado por IA dentro del laboratorio de experimentos Daelia." schema={lumiSchema}>
   <BrandPage name="Lumi" kicker="Daelia experiments · AI QR" intro="Un generador de códigos QR impulsado por IA, diseñado para convertir una idea en una pieza lista para compartir." sections={sections} tone="lumi" />
 </BaseLayout>

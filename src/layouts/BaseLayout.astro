@@ -2,30 +2,43 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HeroShader from '../components/HeroShader';
+import MotionEnhancer from '../components/MotionEnhancer';
 import profileImage from '../assets/images/IMG_6195.jpg';
-import { authorSchema, siteDescription, siteName, siteUrl } from '../data/site';
+import { authorSchema, organizationSchema, siteDescription, siteName, siteUrl } from '../data/site';
+import { getBreadcrumbItems, serializeJsonLd } from '../lib/seo';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
   ogType?: 'website' | 'article';
+  articleSection?: string;
+  modifiedTime?: string;
 }
 
 const {
   title = 'Christopher Two · Portfolio',
   description = siteDescription,
   image,
+  imageAlt,
   schema = [],
   noindex = false,
   ogType = 'website',
+  articleSection,
+  modifiedTime,
 } = Astro.props;
-const canonical = new URL(Astro.url.pathname, siteUrl);
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const socialImage = new URL(image ?? profileImage.src, siteUrl).href;
-const pageSchema = Array.isArray(schema) ? schema : [schema];
+const socialImageAlt = imageAlt ?? `${title} · ${siteName}`;
+const customSchema = Array.isArray(schema) ? schema : [schema];
+const breadcrumbs = getBreadcrumbItems(Astro.url.pathname, title);
+const robotsContent = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -38,10 +51,31 @@ const jsonLd = {
       inLanguage: 'es-MX',
       publisher: { '@id': `${siteUrl}/bio#person` },
     },
+    organizationSchema,
     authorSchema,
-    ...pageSchema,
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      about: { '@id': `${siteUrl}/bio#person` },
+      inLanguage: 'es-MX',
+      breadcrumb: { '@id': `${canonical}#breadcrumb` },
+      primaryImageOfPage: { '@type': 'ImageObject', url: socialImage, caption: socialImageAlt },
+      ...(modifiedTime ? { dateModified: modifiedTime } : {}),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: breadcrumbs,
+    },
+    ...customSchema,
   ],
 };
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
 ---
 
 <!doctype html>
@@ -50,11 +84,18 @@ const jsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="author" content="Christopher Alejandro Maldonado Chávez" />
+    <meta name="application-name" content={siteName} />
+    <meta name="content-language" content="es-MX" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
-    <meta name="googlebot" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="googlebot" content={robotsContent} />
+    <meta name="bingbot" content={robotsContent} />
     <meta name="theme-color" content="#f7f7f5" />
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+    {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
     <script is:inline>
       try {
         const storedTheme = localStorage.getItem('portfolio-theme');
@@ -70,24 +111,34 @@ const jsonLd = {
       }
     </script>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d0d0d'/%3E%3Ctext x='50' y='67' text-anchor='middle' font-size='55' fill='white'%3ECT%3C/text%3E%3C/svg%3E" />
-    <link rel="canonical" href={canonical.href} />
+    <link rel="canonical" href={canonical} />
     <link rel="alternate" type="text/plain" href={`${siteUrl}/llms.txt`} title="AI-readable site summary" />
+    <link rel="alternate" type="text/plain" href={`${siteUrl}/llms-full.txt`} title="Full AI-readable site content" />
+    <link rel="sitemap" type="application/xml" href={`${siteUrl}/sitemap.xml`} />
+    <link rel="author" href={`${siteUrl}/bio`} />
+    <link rel="me" href="https://github.com/christopher-two" />
+    <link rel="me" href="https://www.linkedin.com/in/christopher-two/" />
+    <link rel="me" href="https://www.instagram.com/christopher_two_/" />
+    <link rel="me" href="https://www.youtube.com/@ChristopherTwo" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:url" content={canonical.href} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="es_MX" />
     {ogType === 'article' && <meta property="article:author" content="Christopher Alejandro Maldonado Chávez" />}
+    {ogType === 'article' && articleSection && <meta property="article:section" content={articleSection} />}
+    {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta property="og:image" content={socialImage} />
-    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:alt" content={socialImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content={title} />
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
+    <script type="application/ld+json" is:inline set:html={serializeJsonLd(jsonLd)} />
     <title>{title}</title>
   </head>
   <body>
@@ -107,31 +158,7 @@ const jsonLd = {
         <slot />
       </main>
       <Footer />
+      <MotionEnhancer client:load />
     </div>
-    <script is:inline>
-      const revealTargets = document.querySelectorAll(
-        'main > section:not(.hero):not(.page-intro), main > article, .project-card, .project-row, .skill, .published-app, .recognition',
-      );
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (!prefersReducedMotion && 'IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add('is-visible');
-              revealObserver.unobserve(entry.target);
-            });
-          },
-          { rootMargin: '0px 0px -10% 0px', threshold: 0.01 },
-        );
-
-        revealTargets.forEach((element, index) => {
-          element.classList.add('reveal-target');
-          element.style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 60}ms`);
-          revealObserver.observe(element);
-        });
-      }
-    </script>
   </body>
 </html>

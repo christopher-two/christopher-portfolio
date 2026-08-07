@@ -1,10 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { childhoodDream, goals } from '../features/bio/domain/bio.content';
-import profileImage from '../assets/images/IMG_6195.jpg';
+import { siteUrl } from '../data/site';
+
+const bioSchema = [
+  {
+    '@type': 'ProfilePage',
+    '@id': `${siteUrl}/bio#profile`,
+    url: `${siteUrl}/bio`,
+    name: 'Sobre Christopher Two',
+    mainEntity: { '@id': `${siteUrl}/bio#person` },
+  },
+];
 ---
 
-<BaseLayout title="Sobre mí · Christopher Two" description="Conoce a Christopher Alejandro Maldonado Chávez, desarrollador multiplataforma especializado en Kotlin, Android y Web.">
+<BaseLayout title="Christopher Two | Desarrollador multiplataforma" description="Conoce a Christopher Alejandro Maldonado Chávez, desarrollador multiplataforma de Uruapan especializado en Kotlin, Android, Web y arquitectura limpia." schema={bioSchema}>
   <section class="page-intro">
     <div class="wrap">
       <span class="eyebrow">Sobre mí · 01</span>
@@ -13,7 +23,6 @@ import profileImage from '../assets/images/IMG_6195.jpg';
     </div>
   </section>
   <article class="article">
-    <img class="profile-image" src={profileImage.src} alt="Christopher Alejandro Maldonado Chávez" width="725" height="967" />
     <h2>{childhoodDream.question}</h2>
     <p>{childhoodDream.answer}</p>
     <h2>Hacia dónde voy</h2>

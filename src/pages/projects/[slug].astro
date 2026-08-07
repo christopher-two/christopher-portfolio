@@ -10,6 +10,7 @@ const project = getProject(Astro.params.slug ?? '');
 if (!project) return Astro.redirect('/projects');
 
 const media = await getProjectMedia(project.r2Folder, 12);
+const coverImage = media.find((item) => !item.isVideo)?.url;
 const paragraphs = project.longDescription.split(/\n\n+/).filter(Boolean);
 const projectSchema = [
   {
@@ -19,22 +20,17 @@ const projectSchema = [
     name: project.title,
     description: project.description,
     keywords: project.tags.join(', '),
+    about: project.tags.map((tag) => ({ '@type': 'Thing', name: tag })),
     creator: { '@id': `${siteUrl}/bio#person` },
     isPartOf: { '@id': `${siteUrl}/projects#collection` },
+    mainEntityOfPage: { '@id': `${siteUrl}/projects/${project.slug}#webpage` },
+    ...(coverImage ? { image: new URL(coverImage, siteUrl).href } : {}),
     ...(project.link ? { sameAs: project.link } : {}),
-  },
-  {
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${siteUrl}/landing` },
-      { '@type': 'ListItem', position: 2, name: 'Proyectos', item: `${siteUrl}/projects` },
-      { '@type': 'ListItem', position: 3, name: project.title, item: `${siteUrl}/projects/${project.slug}` },
-    ],
   },
 ];
 ---
 
-<BaseLayout title={`${project.title} · Christopher Two`} description={project.description} ogType="article" schema={projectSchema}>
+<BaseLayout title={`${project.title} | Christopher Two`} description={project.description} image={coverImage} imageAlt={`Imágenes del proyecto ${project.title}`} ogType="article" articleSection="Case study de software" schema={projectSchema}>
   <section class="page-intro">
     <div class="wrap">
       <span class="eyebrow">Case study · {project.categories.join(' / ')}</span>
@@ -50,7 +46,7 @@ const projectSchema = [
   <article class="article">
     {media.length > 0 && (
       <div class="media-strip">
-        {media.map((item) => item.isVideo ? <video src={item.url} width="800" height="600" controls preload="metadata" aria-label={item.description}></video> : <img src={item.url} width="800" height="600" alt={item.description} loading="lazy" />)}
+        {media.map((item) => item.isVideo ? <video src={item.url} width="800" height="600" controls preload="metadata" aria-label={`${project.title}: ${item.description}`}></video> : <img src={item.url} width="800" height="600" alt={`${project.title}: ${item.description}`} loading="lazy" decoding="async" />)}
       </div>
     )}
     <p class="detail-lede">{project.description}</p>

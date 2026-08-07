@@ -1,3 +1,4 @@
+<!--
 # Términos y Condiciones de Spot
 
 **Última actualización: 6 de enero de 2026**
@@ -492,6 +493,7 @@ Al hacer clic en "Aceptar", instalar o usar la Aplicación, usted reconoce que:
 ---
 
 *Estos Términos y Condiciones son efectivos a partir del 6 de enero de 2026.*
+-->
 
 # Términos y Condiciones de Spot
 
@@ -987,4 +989,3 @@ Al hacer clic en "Aceptar", instalar o usar la Aplicación, usted reconoce que:
 ---
 
 *Estos Términos y Condiciones son efectivos a partir del 6 de enero de 2026.*
-

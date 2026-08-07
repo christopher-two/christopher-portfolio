@@ -1,8 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Privacy from '../../content/spot/privacy.md';
+import { siteUrl } from '../../data/site';
+
+const privacySchema = [
+  {
+    '@type': 'Article',
+    '@id': `${siteUrl}/spot/privacy#article`,
+    headline: 'Política de privacidad de Spot',
+    description: 'Política de privacidad de Spot, aplicación de geocaching emocional basada en ubicación.',
+    dateModified: '2026-01-06',
+    author: { '@id': `${siteUrl}/bio#person` },
+    publisher: { '@id': `${siteUrl}/override#organization` },
+    mainEntityOfPage: { '@id': `${siteUrl}/spot/privacy#webpage` },
+  },
+];
 ---
 
-<BaseLayout title="Política de privacidad · Spot" description="Política de privacidad de Spot, aplicación de geocaching emocional basada en ubicación.">
+<BaseLayout title="Política de privacidad | Spot" description="Política de privacidad de Spot, aplicación de geocaching emocional basada en ubicación." ogType="article" articleSection="Legal" modifiedTime="2026-01-06" schema={privacySchema}>
   <article class="article"><span class="eyebrow">Spot / Legal</span><Privacy /></article>
 </BaseLayout>

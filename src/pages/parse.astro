@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandPage from '../components/BrandPage.astro';
+import { siteUrl } from '../data/site';
 
 const sections = [
   { letter: 'F', title: 'EATURES', description: 'Experiencia de lectura inmersiva estilo Kindle. Gestión de biblioteca, soporte PDF y más.' },
@@ -8,8 +9,21 @@ const sections = [
   { letter: 'M', title: 'ODULAR', description: 'Clean Architecture modular. Separación clara por features: auth, home, book y settings.' },
   { letter: 'G', title: 'ET IT', description: 'Clona el repo, configura Firebase y compila. Open source y listo para contribuir.' },
 ];
+
+const parseSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': `${siteUrl}/parse#software`,
+    name: 'Parse',
+    url: `${siteUrl}/parse`,
+    description: 'Lector de libros y PDFs para Android con traducción inteligente, navegación moderna y diseño enfocado.',
+    applicationCategory: 'EducationalApplication',
+    operatingSystem: 'Android',
+    creator: { '@id': `${siteUrl}/bio#person` },
+  },
+];
 ---
 
-<BaseLayout title="Parse · Christopher Two" description="Parse es un lector de libros y PDFs para Android con traducción inteligente, navegación moderna y diseño enfocado.">
+<BaseLayout title="Parse | Lector Android" description="Parse es un lector de libros y PDFs para Android con traducción inteligente, navegación moderna y diseño enfocado." schema={parseSchema}>
   <BrandPage name="Parse" kicker="Android · Reading without noise" intro="Un lector de libros moderno para Android con traducción inteligente y una experiencia que respeta la concentración." sections={sections} tone="parse" />
 </BaseLayout>

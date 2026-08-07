@@ -51,7 +51,7 @@ typography:
     lineHeight: 0.86
     letterSpacing: "-0.075em"
   body:
-    fontFamily: "Archivo, Arial, sans-serif"
+    fontFamily: "Bricolage Grotesque, Arial, sans-serif"
     fontSize: "16px"
     fontWeight: 400
     lineHeight: 1.5
@@ -120,10 +120,10 @@ The palette is a grayscale material system rather than an accent system. Theme s
 ## Typography
 
 **Display Font:** Archivo (with Arial, sans-serif fallback)
-**Body Font:** Archivo (with Arial, sans-serif fallback)
+**Body Font:** Bricolage Grotesque (with Arial, sans-serif fallback)
 **Label/Mono Font:** IBM Plex Mono (monospace)
 
-**Character:** Archivo gives statements a dense, assertive silhouette without adding ornament. IBM Plex Mono is reserved for navigation, measurements, metadata, and project indexing.
+**Character:** Archivo gives statements a dense, assertive silhouette without adding ornament. Bricolage Grotesque gives the reading layer a more expressive editorial rhythm while staying clear in Spanish. IBM Plex Mono is reserved for navigation, measurements, metadata, and project indexing.
 
 ### Hierarchy
 - **Display** (900, `clamp(3.4rem, 8vw, 6.8rem)`, `.86`): Hero and page-introduction statements.

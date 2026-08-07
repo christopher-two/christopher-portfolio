@@ -1,9 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { projects } from '../../data/portfolio';
+import { siteUrl } from '../../data/site';
+
+const resumeSchema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${siteUrl}/projects/resume#collection`,
+    url: `${siteUrl}/projects/resume`,
+    name: 'Resumen de proyectos de Christopher Two',
+    description: 'Resumen de productos, sistemas y proyectos multiplataforma desarrollados por Christopher Two.',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projects.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: project.title,
+        url: `${siteUrl}/projects/${project.slug}`,
+      })),
+    },
+  },
+];
 ---
 
-<BaseLayout title="Resumen de proyectos · Christopher Two" description="Resumen imprimible de los productos, sistemas y proyectos multiplataforma desarrollados por Christopher Two.">
+<BaseLayout title="Resumen de proyectos | Christopher Two" description="Resumen imprimible de productos, sistemas y proyectos multiplataforma desarrollados por Christopher Two." schema={resumeSchema}>
   <section class="page-intro">
     <div class="wrap">
       <span class="eyebrow">Resumen imprimible</span>

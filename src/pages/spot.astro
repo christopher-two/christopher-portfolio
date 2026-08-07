@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteUrl } from '../data/site';
 
 const features = [
   ['SENTIMIENTO', 'Recuerdos anclados a un lugar, listos para aparecer cuando vuelves.'],
@@ -7,9 +8,23 @@ const features = [
   ['OBJETIVO', 'Una experiencia visual-first para guardar momentos que importan.'],
   ['TESOROS', 'Geocaching emocional para convertir coordenadas en historias.'],
 ];
+
+const spotSchema = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': `${siteUrl}/spot#software`,
+    name: 'Spot',
+    url: `${siteUrl}/spot`,
+    description: 'Aplicación de geocaching emocional para crear cápsulas del tiempo visuales georreferenciadas.',
+    applicationCategory: 'SocialNetworkingApplication',
+    operatingSystem: 'Android',
+    featureList: features.map(([, description]) => description),
+    creator: { '@id': `${siteUrl}/bio#person` },
+  },
+];
 ---
 
-<BaseLayout title="Spot · Christopher Two" description="Spot es una red social sentimental basada en ubicación para guardar recuerdos visuales en lugares reales.">
+<BaseLayout title="Spot | Geocaching emocional" description="Spot es una red social sentimental basada en ubicación para guardar recuerdos visuales en lugares reales." schema={spotSchema}>
   <section class="hero hero-ink">
     <div class="wrap hero-grid">
       <div>

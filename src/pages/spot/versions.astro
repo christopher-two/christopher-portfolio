@@ -1,8 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Versions from '../../content/spot/versions.md';
+import { siteUrl } from '../../data/site';
+
+const versionsSchema = [
+  {
+    '@type': 'Article',
+    '@id': `${siteUrl}/spot/versions#article`,
+    headline: 'Historial de versiones de Spot',
+    description: 'Historial de versiones y cambios de Spot, aplicación de recuerdos georreferenciados.',
+    author: { '@id': `${siteUrl}/bio#person` },
+    publisher: { '@id': `${siteUrl}/override#organization` },
+    mainEntityOfPage: { '@id': `${siteUrl}/spot/versions#webpage` },
+  },
+];
 ---
 
-<BaseLayout title="Versiones · Spot" description="Historial de versiones y cambios de Spot, aplicación de recuerdos georreferenciados.">
+<BaseLayout title="Versiones | Spot" description="Historial de versiones y cambios de Spot, aplicación de recuerdos georreferenciados." ogType="article" articleSection="Changelog" schema={versionsSchema}>
   <article class="article"><span class="eyebrow">Spot / Changelog</span><Versions /></article>
 </BaseLayout>

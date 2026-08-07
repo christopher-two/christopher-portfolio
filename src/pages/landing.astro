@@ -2,35 +2,19 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
+import { portfolioFaq, publishedApps } from '../data/seo';
 import { siteUrl } from '../data/site';
 
 const homeProjects = projects.slice(0, 10);
-const publishedApps = [
-  {
-    index: '01',
-    name: 'Parse',
-    mark: 'P',
-    description: 'Lector de libros y PDFs para Android con traducción inteligente y una experiencia enfocada.',
-    href: 'https://play.google.com/store/apps/details?id=org.christophertwo.parse',
-    tone: 'app-violet',
-  },
-  {
-    index: '02',
-    name: 'Helix',
-    mark: 'H',
-    description: 'Monitor de sistema para Android con métricas de batería, memoria, almacenamiento y sensores.',
-    href: 'https://play.google.com/store/apps/details?id=org.override.system.monitor',
-    tone: 'app-acid',
-  },
-  {
-    index: '03',
-    name: 'Jukskani',
-    mark: 'J',
-    description: 'Plataforma inmobiliaria para explorar, publicar y gestionar propiedades desde Android.',
-    href: 'https://play.google.com/store/apps/details?id=org.override.eje.android',
-    tone: 'app-pink',
-  },
-];
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': `${siteUrl}/landing#faq`,
+  mainEntity: portfolioFaq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
 const landingSchema = [
   {
     '@type': 'ProfilePage',
@@ -57,9 +41,12 @@ const landingSchema = [
     description: app.description,
     applicationCategory: 'MobileApplication',
     operatingSystem: 'Android',
+    applicationSubCategory: app.applicationCategory,
     downloadUrl: app.href,
+    url: app.href,
     creator: { '@id': `${siteUrl}/bio#person` },
   })),
+  faqSchema,
 ];
 ---
 
@@ -130,6 +117,26 @@ const landingSchema = [
               <span class="skill-stack">{skill.stack}</span>
             </div>
             <p>{skill.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2 class="section-title">Respuestas directas sobre mi trabajo.</h2>
+        </div>
+        <p class="section-note">Una guía breve para entender el tipo de productos, tecnologías y colaboraciones que forman parte de este portfolio.</p>
+      </div>
+      <div class="faq-list">
+        {portfolioFaq.map((item) => (
+          <article class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
           </article>
         ))}
       </div>

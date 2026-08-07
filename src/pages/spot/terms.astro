@@ -1,8 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Terms from '../../content/spot/terms.md';
+import { siteUrl } from '../../data/site';
+
+const termsSchema = [
+  {
+    '@type': 'Article',
+    '@id': `${siteUrl}/spot/terms#article`,
+    headline: 'Términos y condiciones de Spot',
+    description: 'Términos y condiciones de uso de Spot, aplicación móvil de geocaching emocional.',
+    dateModified: '2026-01-06',
+    author: { '@id': `${siteUrl}/bio#person` },
+    publisher: { '@id': `${siteUrl}/override#organization` },
+    mainEntityOfPage: { '@id': `${siteUrl}/spot/terms#webpage` },
+  },
+];
 ---
 
-<BaseLayout title="Términos y condiciones · Spot" description="Términos y condiciones de uso de Spot, aplicación móvil de geocaching emocional.">
+<BaseLayout title="Términos y condiciones | Spot" description="Términos y condiciones de uso de Spot, aplicación móvil de geocaching emocional." ogType="article" articleSection="Legal" modifiedTime="2026-01-06" schema={termsSchema}>
   <article class="article"><span class="eyebrow">Spot / Legal</span><Terms /></article>
 </BaseLayout>

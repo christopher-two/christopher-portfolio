@@ -6,11 +6,15 @@ export function GET() {
   const body = `User-agent: *
 Allow: /
 Disallow: /api/
+Allow: /api/r2-image
 
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -26,6 +30,12 @@ User-agent: Google-Extended
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Applebot
 Allow: /
 
 Sitemap: ${siteUrl}/sitemap.xml

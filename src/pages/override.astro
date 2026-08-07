@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BrandPage from '../components/BrandPage.astro';
+import { siteUrl } from '../data/site';
 
 const sections = [
   ['O', 'RIGEN', 'El punto de partida para la transformación digital. Construimos desde cero con bases sólidas.'],
@@ -12,8 +13,18 @@ const sections = [
   ['D', 'OMINIO', 'Control total sobre tu infraestructura tecnológica. Seguridad y estabilidad garantizadas.'],
   ['E', 'COSISTEMA', 'Integración perfecta de todas tus herramientas. Un todo cohesivo y funcional.'],
 ].map(([letter, title, description]) => ({ letter, title, description }));
+
+const overrideSchema = [
+  {
+    '@type': 'AboutPage',
+    '@id': `${siteUrl}/override#page`,
+    url: `${siteUrl}/override`,
+    name: 'Override · Empresa de software',
+    mainEntity: { '@id': `${siteUrl}/override#organization` },
+  },
+];
 ---
 
-<BaseLayout title="Override · Christopher Two" description="Conoce el manifiesto de Override, empresa de software enfocada en productos digitales claros, rápidos y escalables.">
+<BaseLayout title="Override | Empresa de software" description="Conoce el manifiesto de Override, empresa de software enfocada en productos digitales claros, rápidos y escalables." schema={overrideSchema}>
   <BrandPage name="Override" kicker="Empresa de software · Manifiesto" intro="Una empresa para construir productos digitales con criterio, velocidad y una identidad propia." sections={sections} tone="override" />
 </BaseLayout>

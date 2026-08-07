@@ -11,6 +11,7 @@
     },
     "typographyMeta": {
       "display": { "displayName": "Archivo Black Display", "purpose": "Assertive statements and project titles." },
+      "body": { "displayName": "Bricolage Grotesque Body", "purpose": "Expressive, readable editorial copy and interface text." },
       "label": { "displayName": "IBM Plex Mono Index", "purpose": "Navigation, metadata, and technical proof marks." }
     },
     "shadows": [
