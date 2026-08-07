@@ -4,10 +4,9 @@ import { getProjectTechFilters, type Project } from '../data/portfolio';
 interface Props {
   project: Project;
   index: number;
-  coverImage?: string;
 }
 
-const { project, index, coverImage } = Astro.props;
+const { project, index } = Astro.props;
 ---
 
 <a class="project-card" href={`/projects/${project.slug}`} data-project-tags={getProjectTechFilters(project).join('|')}>
@@ -15,11 +14,6 @@ const { project, index, coverImage } = Astro.props;
     <span>{String(index + 1).padStart(2, '0')} / case study</span>
     <span>{project.categories?.[0] ?? 'Producto'}</span>
   </div>
-  {coverImage && (
-    <div class="project-card-media">
-      <img src={coverImage} alt={`Vista de ${project.title}`} loading={index < 4 ? 'eager' : 'lazy'} decoding="async" />
-    </div>
-  )}
   <div>
     <h2>{project.title}</h2>
     <p>{project.description}</p>
