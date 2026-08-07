@@ -213,6 +213,19 @@ html.motion-ready .ticker-track { animation: ticker 28s linear infinite; }
 .recognition p { max-width: 54ch; margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
 .recognition .mono { display: block; margin-bottom: 12px; color: var(--ink-soft); font-size: 10px; text-transform: uppercase; }
 
+.route-index-section { background: transparent; }
+.route-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 18px; border-top: var(--line-strong); }
+.route-group { min-width: 0; }
+.route-group h3 { margin: 0; border-bottom: var(--line); padding: 18px 0 15px; font-size: 1.35rem; font-weight: 800; line-height: 1; letter-spacing: -.05em; }
+.route-list { margin: 0; padding: 0; list-style: none; }
+.route-link { display: flex; min-height: 66px; align-items: center; justify-content: space-between; gap: 18px; border-bottom: var(--line); padding: 12px 0; color: var(--ink); transition: background-color .16s ease, transform .16s ease; }
+.route-link:hover { background: var(--surface); transform: translateX(4px); }
+.route-link-copy { display: flex; min-width: 0; flex-direction: column; gap: 4px; }
+.route-link strong { font-size: 14px; font-weight: 600; line-height: 1.2; }
+.route-link small { overflow-wrap: anywhere; color: var(--ink-soft); font: 500 11px var(--font-mono); line-height: 1.25; }
+.route-arrow { flex: 0 0 auto; font-size: 18px; transition: transform .16s ease; }
+.route-link:hover .route-arrow { transform: translate(2px, -2px); }
+
 .contact-section { position: relative; overflow: hidden; background: transparent; color: var(--ink); }
 .contact-section .eyebrow { color: var(--ink-soft); }
 .contact-section .eyebrow::before { border-color: var(--ink); background: var(--ink); }
@@ -293,7 +306,7 @@ html.motion-ready .ticker-track { animation: ticker 28s linear infinite; }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .skills-list, .published-apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .skills-list, .published-apps, .route-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .skill:nth-child(2) { transform: none; }
 }
 
@@ -306,7 +319,7 @@ html.motion-ready .ticker-track { animation: ticker 28s linear infinite; }
   .project-row { grid-template-columns: 35px minmax(0, 1fr) 25px; gap: 11px; }
   .project-tags { display: none; }
   .project-description { font-size: 12px; }
-  .skills-list, .projects-grid, .published-apps, .faq-list { grid-template-columns: 1fr; }
+  .skills-list, .projects-grid, .published-apps, .faq-list, .route-groups { grid-template-columns: 1fr; }
   .skill:nth-child(2) { transform: none; }
   .recognitions { grid-template-columns: 1fr; }
   .recognition, .recognition:nth-child(2n) { border-right: 0; padding: 22px 0; }

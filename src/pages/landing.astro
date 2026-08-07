@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
+import { siteRouteGroups } from '../data/routes';
 import { portfolioFaq, publishedApps } from '../data/seo';
 import { siteUrl } from '../data/site';
 
@@ -189,6 +190,38 @@ const landingSchema = [
               <p>{copy}</p>
             </div>
           </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section route-index-section" id="routes">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Mapa del sitio</span>
+          <h2 class="section-title">Todas las rutas, en un solo lugar.</h2>
+        </div>
+        <p class="section-note">Una constancia navegable de cada página pública, producto, documento, recurso y case study disponible en el proyecto.</p>
+      </div>
+      <div class="route-groups">
+        {siteRouteGroups.map((group) => (
+          <section class="route-group" aria-labelledby={`route-group-${group.label.toLowerCase().replace(/\s+/g, '-')}`}>
+            <h3 id={`route-group-${group.label.toLowerCase().replace(/\s+/g, '-')}`}>{group.label}</h3>
+            <ul class="route-list">
+              {group.routes.map((route) => (
+                <li>
+                  <a class="route-link" href={route.path}>
+                    <span class="route-link-copy">
+                      <strong>{route.label}</strong>
+                      <small>{route.path}</small>
+                    </span>
+                    <span class="route-arrow" aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </div>
     </div>
