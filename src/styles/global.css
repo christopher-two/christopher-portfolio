@@ -216,7 +216,7 @@ html.motion-ready .ticker-track { animation: ticker 28s linear infinite; }
 .route-index-section { background: transparent; }
 .route-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 18px; border-top: var(--line-strong); }
 .route-group { min-width: 0; }
-.route-group h3 { margin: 0; border-bottom: var(--line); padding: 18px 0 15px; font-size: 1.35rem; font-weight: 800; line-height: 1; letter-spacing: -.05em; }
+.route-group h2 { margin: 0; border-bottom: var(--line); padding: 18px 0 15px; font-size: 1.35rem; font-weight: 800; line-height: 1; letter-spacing: -.05em; }
 .route-list { margin: 0; padding: 0; list-style: none; }
 .route-link { display: flex; min-height: 66px; align-items: center; justify-content: space-between; gap: 18px; border-bottom: var(--line); padding: 12px 0; color: var(--ink); transition: background-color .16s ease, transform .16s ease; }
 .route-link:hover { background: var(--surface); transform: translateX(4px); }

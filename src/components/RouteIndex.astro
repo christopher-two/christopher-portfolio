@@ -1,0 +1,45 @@
+---
+import { siteRouteGroups } from '../data/routes';
+
+interface Props {
+  page?: boolean;
+}
+
+const { page = false } = Astro.props;
+---
+
+<section class="section route-index-section" id="routes">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Mapa del sitio</span>
+        {page ? (
+          <h1 class="section-title">Todas las rutas, en un solo lugar.</h1>
+        ) : (
+          <h2 class="section-title">Todas las rutas, en un solo lugar.</h2>
+        )}
+      </div>
+      <p class="section-note">Una constancia navegable de cada página pública, producto, documento, recurso y case study disponible en el proyecto.</p>
+    </div>
+    <div class="route-groups">
+      {siteRouteGroups.map((group) => (
+        <section class="route-group" aria-labelledby={`route-group-${group.label.toLowerCase().replace(/\s+/g, '-')}`}>
+          <h2 id={`route-group-${group.label.toLowerCase().replace(/\s+/g, '-')}`}>{group.label}</h2>
+          <ul class="route-list">
+            {group.routes.map((route) => (
+              <li>
+                <a class="route-link" href={route.path}>
+                  <span class="route-link-copy">
+                    <strong>{route.label}</strong>
+                    <small>{route.path}</small>
+                  </span>
+                  <span class="route-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>

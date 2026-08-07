@@ -24,6 +24,7 @@ export const siteRouteGroups: SiteRouteGroup[] = [
     routes: [
       { path: '/', label: 'Entrada principal', description: 'Redirige a la landing principal.', includeInSitemap: false },
       { path: '/landing', label: 'Inicio', description: 'Presentación, trabajo, productos y contacto.' },
+      { path: '/routes', label: 'Mapa del sitio', description: 'Índice completo de las rutas públicas del proyecto.' },
     ],
   },
   {

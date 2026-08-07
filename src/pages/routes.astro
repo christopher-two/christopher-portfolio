@@ -1,0 +1,32 @@
+---
+import RouteIndex from '../components/RouteIndex.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteRouteGroups } from '../data/routes';
+import { siteUrl } from '../data/site';
+
+const routes = siteRouteGroups.flatMap((group) => group.routes);
+const routesSchema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${siteUrl}/routes#collection`,
+    url: `${siteUrl}/routes`,
+    name: 'Mapa del sitio · Christopher Two',
+    description: 'Índice completo de las páginas públicas, productos, documentos, recursos y case studies de Christopher Two.',
+  },
+  {
+    '@type': 'ItemList',
+    '@id': `${siteUrl}/routes#routes`,
+    name: 'Rutas públicas de Christopher Two',
+    itemListElement: routes.map((route, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: route.label,
+      url: `${siteUrl}${route.path}`,
+    })),
+  },
+];
+---
+
+<BaseLayout title="Mapa del sitio · Christopher Two" description="Índice completo de las páginas públicas, productos, documentos, recursos y case studies de Christopher Two." schema={routesSchema}>
+  <RouteIndex page />
+</BaseLayout>
