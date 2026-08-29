@@ -213,6 +213,17 @@ html.motion-ready .ticker-track { animation: ticker 28s linear infinite; }
 .recognition p { max-width: 54ch; margin: 0; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
 .recognition .mono { display: block; margin-bottom: 12px; color: var(--ink-soft); font-size: 10px; text-transform: uppercase; }
 
+.github-section { background: var(--surface); }
+.github-activity-list { display: flex; flex-direction: column; border-top: var(--line-strong); }
+.github-activity-item { display: grid; grid-template-columns: 52px minmax(0, 1fr) 180px; gap: 18px; align-items: center; border-bottom: var(--line); padding: 19px 0; color: var(--ink); transition: background-color .16s ease, transform .16s ease; }
+.github-activity-item:hover { background: var(--paper); transform: translateX(7px); }
+.github-activity-index, .github-activity-meta, .github-activity-detail { font: 500 10px var(--font-mono); text-transform: uppercase; }
+.github-activity-index, .github-activity-meta, .github-activity-detail { color: var(--ink-soft); }
+.github-activity-copy { display: flex; min-width: 0; flex-direction: column; gap: 5px; }
+.github-activity-copy strong { overflow: hidden; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; letter-spacing: -.035em; text-overflow: ellipsis; white-space: nowrap; }
+.github-activity-detail { text-align: right; }
+.github-empty { border-top: var(--line-strong); border-bottom: var(--line); padding: 24px 0; color: var(--ink-soft); font: 500 11px var(--font-mono); text-transform: uppercase; }
+
 .route-index-section { background: transparent; }
 .route-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 18px; border-top: var(--line-strong); }
 .route-group { min-width: 0; }
@@ -340,6 +351,8 @@ html.motion-ready .ticker-track { animation: ticker 28s linear infinite; }
   .skill:nth-child(2) { transform: none; }
   .recognitions { grid-template-columns: 1fr; }
   .recognition, .recognition:nth-child(2n) { border-right: 0; padding: 22px 0; }
+  .github-activity-item { grid-template-columns: 35px minmax(0, 1fr); gap: 11px; }
+  .github-activity-detail { grid-column: 2; text-align: left; }
   .faq-item, .faq-item:nth-child(2n) { border-left: 0; padding: 22px 0; }
   .page-intro { padding: 76px 0 54px; }
   .media-gallery { padding-top: 54px; padding-bottom: 70px; }

@@ -4,8 +4,10 @@ import ProjectRow from '../components/ProjectRow.astro';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
 import { portfolioFaq, publishedApps } from '../data/seo';
 import { siteUrl } from '../data/site';
+import { getGithubActivity } from '../lib/github';
 
 const homeProjects = projects.slice(0, 10);
+const githubActivity = await getGithubActivity('christopher-two');
 const faqSchema = {
   '@type': 'FAQPage',
   '@id': `${siteUrl}/landing#faq`,
@@ -191,6 +193,35 @@ const landingSchema = [
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section github-section" aria-labelledby="github-activity-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Actividad pública · GitHub</span>
+          <h2 class="section-title" id="github-activity-title">El trabajo sigue después del lanzamiento.</h2>
+        </div>
+        <p class="section-note">Una lectura breve de los repositorios que están cambiando ahora mismo.</p>
+      </div>
+      {githubActivity.length > 0 ? (
+        <div class="github-activity-list">
+          {githubActivity.map((item, index) => (
+            <a class="github-activity-item" href={item.url} target="_blank" rel="noreferrer">
+              <span class="github-activity-index">{String(index + 1).padStart(2, '0')}</span>
+              <span class="github-activity-copy">
+                <span class="github-activity-meta">{item.label} · {item.repository}</span>
+                <strong>{item.title}</strong>
+              </span>
+              <span class="github-activity-detail">{item.detail} · {new Date(item.date).toLocaleDateString('es-MX', { day: '2-digit', month: 'short' })} ↗</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="github-empty">La actividad pública no está disponible en este momento.</div>
+      )}
+      <a class="button button-ghost button-spaced" href="https://github.com/christopher-two" target="_blank" rel="noreferrer">Ver perfil completo ↗</a>
     </div>
   </section>
 
