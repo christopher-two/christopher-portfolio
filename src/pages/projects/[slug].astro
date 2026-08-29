@@ -9,7 +9,7 @@ export const prerender = false;
 const project = getProject(Astro.params.slug ?? '');
 if (!project) return Astro.redirect('/projects');
 
-const media = await getProjectMedia(project.r2Folder, 12);
+const media = await getProjectMedia(project.r2Folder);
 const coverImage = media.find((item) => !item.isVideo)?.url;
 const paragraphs = project.longDescription.split(/\n\n+/).filter(Boolean);
 const projectSchema = [
@@ -44,15 +44,108 @@ const projectSchema = [
   </section>
 
   <article class="article">
-    {media.length > 0 && (
-      <div class="media-strip">
-        {media.map((item) => item.isVideo ? <video src={item.url} controls preload="metadata" aria-label={`${project.title}: ${item.description}`}></video> : <img src={item.url} alt={`${project.title}: ${item.description}`} loading="lazy" decoding="async" />)}
-      </div>
-    )}
     <p class="detail-lede">{project.description}</p>
     {paragraphs.map((paragraph) => (
       paragraph.startsWith('### ') ? <h2>{paragraph.replace(/^### /, '')}</h2> : <p set:html={paragraph.replace(/\n- /g, '<br />• ').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
     ))}
     <a class="button button-ghost" href="/projects">← Volver al archivo</a>
   </article>
+
+  {media.length > 0 && (
+    <section class="media-gallery" aria-labelledby="media-gallery-title" data-media-gallery>
+      <div class="media-gallery-heading">
+        <span class="eyebrow">Archivo visual</span>
+        <h2 id="media-gallery-title">El proyecto en uso.</h2>
+        <p>{media.length} piezas · selecciona una para verla a tamaño completo.</p>
+      </div>
+      <div class="media-grid">
+        {media.map((item, index) => (
+          <button class="media-item" type="button" data-media-index={index} data-media-url={item.url} data-media-video={item.isVideo ? 'true' : 'false'} data-media-alt={`${project.title}: ${item.description}`} aria-label={`Ver ${item.isVideo ? 'video' : 'imagen'} ${index + 1} de ${media.length}`}>
+            {item.isVideo ? <video src={item.url} muted playsinline preload="metadata" aria-hidden="true"></video> : <img src={item.url} alt={`${project.title}: ${item.description}`} loading="lazy" decoding="async" />}
+            <span class="media-item-label">{String(index + 1).padStart(2, '0')} · Ver completo ↗</span>
+          </button>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {media.length > 0 && (
+    <dialog class="media-viewer" data-media-viewer aria-labelledby="media-viewer-title">
+      <div class="media-viewer-shell">
+        <div class="media-viewer-topbar">
+          <span id="media-viewer-title" class="media-viewer-counter" data-media-counter>01 / {media.length}</span>
+          <button class="media-viewer-close" type="button" data-media-close aria-label="Cerrar visor">Cerrar ×</button>
+        </div>
+        <div class="media-viewer-content" data-media-content></div>
+        <div class="media-viewer-controls">
+          <button class="button button-ghost" type="button" data-media-prev>← Anterior</button>
+          <button class="button button-ghost" type="button" data-media-next>Siguiente →</button>
+        </div>
+      </div>
+    </dialog>
+  )}
+
+  {media.length > 0 && <script>
+    const gallery = document.querySelector<HTMLElement>('[data-media-gallery]');
+    const viewer = document.querySelector<HTMLDialogElement>('[data-media-viewer]');
+    const viewerContent = viewer?.querySelector<HTMLElement>('[data-media-content]');
+    const counter = viewer?.querySelector<HTMLElement>('[data-media-counter]');
+    const items = [...document.querySelectorAll<HTMLButtonElement>('[data-media-index]')];
+    let activeIndex = 0;
+
+    const setMedia = (index: number) => {
+      if (!viewer || !viewerContent || !counter || items.length === 0) return;
+      activeIndex = (index + items.length) % items.length;
+      const item = items[activeIndex];
+      const url = item.dataset.mediaUrl ?? '';
+      const alt = item.dataset.mediaAlt ?? '';
+      viewerContent.replaceChildren();
+      if (item.dataset.mediaVideo === 'true') {
+        const video = document.createElement('video');
+        video.src = url;
+        video.controls = true;
+        video.autoplay = false;
+        video.playsInline = true;
+        video.setAttribute('aria-label', alt);
+        viewerContent.appendChild(video);
+      } else {
+        const image = document.createElement('img');
+        image.src = url;
+        image.alt = alt;
+        image.decoding = 'async';
+        viewerContent.appendChild(image);
+      }
+      counter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${items.length}`;
+    };
+
+    items.forEach((item) => item.addEventListener('click', () => {
+      setMedia(Number(item.dataset.mediaIndex));
+      viewer?.showModal();
+      document.body.style.overflow = 'hidden';
+    }));
+    viewer?.querySelector('[data-media-close]')?.addEventListener('click', () => viewer.close());
+    viewer?.querySelector('[data-media-prev]')?.addEventListener('click', () => setMedia(activeIndex - 1));
+    viewer?.querySelector('[data-media-next]')?.addEventListener('click', () => setMedia(activeIndex + 1));
+    viewer?.addEventListener('click', (event) => {
+      if (event.target === viewer) viewer.close();
+    });
+    viewer?.addEventListener('close', () => {
+      viewerContent?.replaceChildren();
+      document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!viewer?.open) return;
+      if (event.key === 'ArrowLeft') setMedia(activeIndex - 1);
+      if (event.key === 'ArrowRight') setMedia(activeIndex + 1);
+    });
+
+    const markOrientation = (image: HTMLImageElement) => {
+      const item = image.closest<HTMLButtonElement>('.media-item');
+      if (item && image.naturalWidth > image.naturalHeight * 1.2) item.classList.add('is-landscape');
+    };
+    gallery?.querySelectorAll<HTMLImageElement>('.media-item img').forEach((image) => {
+      if (image.complete) markOrientation(image);
+      else image.addEventListener('load', () => markOrientation(image), { once: true });
+    });
+  </script>}
 </BaseLayout>

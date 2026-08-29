@@ -15,16 +15,21 @@ function prefixesFor(folder: string) {
     .map((prefix) => `${prefix}/`);
 }
 
-export async function getProjectMedia(folder: string, maxItems = 12): Promise<ProjectMedia[]> {
+export async function getProjectMedia(folder: string, maxItems = Number.POSITIVE_INFINITY): Promise<ProjectMedia[]> {
   const bucket = env.PROJECTS_BUCKET;
   if (!bucket || !folder) return [];
 
   for (const prefix of prefixesFor(folder)) {
-    const listing = await bucket.list({ prefix, limit: Math.min(1000, maxItems + 1) });
-    const mediaObjects = listing.objects.filter((object) => {
-      const key = object.key.toLowerCase();
-      return !object.key.endsWith('/') && /\.(avif|gif|jpe?g|png|svg|webp|mp4|webm)$/i.test(key);
-    });
+    const mediaObjects: R2Object[] = [];
+    let cursor: string | undefined;
+    do {
+      const listing = await bucket.list({ prefix, limit: Math.min(1000, maxItems - mediaObjects.length), cursor });
+      mediaObjects.push(...listing.objects.filter((object) => {
+        const key = object.key.toLowerCase();
+        return !object.key.endsWith('/') && /\.(avif|gif|jpe?g|png|svg|webp|mp4|webm)$/i.test(key);
+      }));
+      cursor = listing.truncated ? listing.cursor : undefined;
+    } while (cursor && mediaObjects.length < maxItems);
     if (mediaObjects.length === 0) continue;
 
     return mediaObjects.slice(0, maxItems).map((object) => ({
