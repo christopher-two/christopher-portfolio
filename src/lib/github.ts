@@ -16,6 +16,7 @@ type GithubEvent = {
   created_at: string;
   payload?: {
     ref?: string;
+    head?: string;
     size?: number;
     action?: string;
     commits?: Array<{ message?: string; sha?: string }>;
@@ -43,16 +44,21 @@ function mapEvent(event: GithubEvent): GithubActivityItem | null {
 
   if (event.type === 'PushEvent') {
     const commit = payload.commits?.[0];
-    if (!commit) return null;
+    const branch = payload.ref?.replace(/^refs\/heads\//, '') || 'main';
+    const changeCount = payload.size ?? payload.commits?.length;
     return {
       id: event.id,
       type: 'commit',
       label: 'Commit',
-      title: formatCommitTitle(commit.message),
+      title: commit ? formatCommitTitle(commit.message) : `Actualización en ${branch}`,
       repository: repositoryName(repository),
       date: event.created_at,
-      url: `https://github.com/${repository}/commit/${commit.sha}`,
-      detail: `${payload.size ?? payload.commits?.length ?? 1} cambio${(payload.size ?? payload.commits?.length ?? 1) === 1 ? '' : 's'}`,
+      url: commit?.sha
+        ? `https://github.com/${repository}/commit/${commit.sha}`
+        : payload.head
+          ? `https://github.com/${repository}/commit/${payload.head}`
+          : `https://github.com/${repository}/commits/${encodeURIComponent(branch)}`,
+      detail: changeCount ? `${changeCount} cambio${changeCount === 1 ? '' : 's'}` : `rama ${branch}`,
     };
   }
 
