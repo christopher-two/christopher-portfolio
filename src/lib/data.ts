@@ -90,6 +90,30 @@ export const TECH_CATEGORIES = {
 
 export const projects = [
   {
+    id: "28",
+    slug: "grupo-fame",
+    title: "Grupo Fame · Gestión de Vacantes",
+    description: "Panel administrativo multiplataforma para gestionar vacantes, catálogos y configuraciones de contratación.",
+    longDescription: `**Grupo Fame · Gestión de Vacantes** es un panel administrativo multiplataforma para centralizar la operación de vacantes y sus configuraciones de captura.
+
+### Operación administrativa
+
+- **Dashboard operativo:** Resumen de actividad y filtros por estado para consultar rápidamente las vacantes.
+- **Gestión de vacantes:** Alta, edición, detalle y borrado lógico de oportunidades laborales.
+- **Catálogos configurables:** Administración de categorías, tipos de empleo, correos, teléfonos, requisitos y beneficios sugeridos.
+- **Acceso protegido:** Inicio de sesión con Firebase Authentication y autorización mediante el custom claim admin.
+
+### Multiplataforma y offline-first
+
+La aplicación comparte dominio, presentación, navegación e inyección de dependencias entre **Android**, **Desktop JVM**, **iOS** y **WebAssembly**. Las plataformas nativas conservan los datos localmente con **Room3** y **SQLite**, mientras una cola de mutaciones sincroniza los cambios con **Firestore** cuando vuelve la conexión.
+
+Construido con **Kotlin Multiplatform**, **Compose Multiplatform**, **Navigation 3**, **Koin**, **Firebase GitLive**, **Ktor**, **Room3**, **SQLite** y **DataStore**, siguiendo una arquitectura por features con **Clean Architecture** y **MVI**.`,
+    r2Folder: "",
+    link: "https://github.com/christopher-two/GrupoFameAdminKMP",
+    categories: [TECH_CATEGORIES.KMP, TECH_CATEGORIES.ANDROID, TECH_CATEGORIES.WEB],
+    tags: ["Kotlin Multiplatform", "Compose Multiplatform", "Firebase", "Firestore", "Room3", "SQLite", "Koin", "Ktor", "Clean Architecture", "MVI", "Offline-first"],
+  },
+  {
     id: "27",
     slug: "jukskani",
     title: "Jukskani",
