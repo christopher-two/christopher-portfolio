@@ -1,0 +1,27 @@
+name: Reporte de error
+description: Reporta un problema visual, funcional o de rendimiento en el portfolio.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del problema
+      description: Explica qué ocurrió y qué esperabas que pasara.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Ruta o URL afectada
+      placeholder: https://www.christopher.com.mx/landing
+  - type: dropdown
+    id: device
+    attributes:
+      label: Dispositivo
+      options:
+        - Escritorio
+        - Móvil
+        - Ambos
+    validations:
+      required: true

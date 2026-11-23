@@ -1,0 +1,12 @@
+name: Sugerencia o mejora
+description: Propón una mejora de diseño, accesibilidad o funcionalidad.
+title: "[Idea]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Propuesta
+      description: Describe la mejora y por qué aporta valor al portfolio.
+    validations:
+      required: true

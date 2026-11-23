@@ -1,525 +1,141 @@
-# Christopher Alejandro Maldonado Chávez - Portfolio 2025
+<div align="center">
 
-Bienvenido a mi portafolio profesional, una plataforma digital que showcasea mis trabajos, proyectos y trayectoria profesional como **Desarrollador Multiplataforma** especializado en **Kotlin Multiplataforma** y **Jetpack Compose**.
+<img src="docs/banner.svg" alt="Christopher Two — Software que llega a producción" width="100%" />
 
-## 📋 Tabla de Contenidos
+<br />
+<br />
 
-- [Acerca del Sitio](#acerca-del-sitio)
-- [Características Principales](#características-principales)
-- [Estructura del Portafolio](#estructura-del-portafolio)
-- [Proyectos Destacados](#proyectos-destacados)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
-- [Secciones del Sitio](#secciones-del-sitio)
-- [Cómo Ejecutar](#cómo-ejecutar)
-- [Contacto](#contacto)
+[![Website](https://img.shields.io/badge/WEB-christopher.com.mx-111111?style=for-the-badge&labelColor=f7f7f5)](https://www.christopher.com.mx)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/christopher-two/christopher-portfolio/deploy.yml?branch=main&style=for-the-badge&label=DEPLOY&color=111111&labelColor=f7f7f5)](https://github.com/christopher-two/christopher-portfolio/actions/workflows/deploy.yml)
+[![Astro](https://img.shields.io/badge/Astro-7.1-111111?style=for-the-badge&logo=astro&logoColor=111111&labelColor=f7f7f5)](https://astro.build)
+[![GSAP](https://img.shields.io/badge/GSAP-3.15-111111?style=for-the-badge&logo=greensock&logoColor=111111&labelColor=f7f7f5)](https://gsap.com)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-111111?style=for-the-badge&logo=cloudflareworkers&logoColor=111111&labelColor=f7f7f5)](https://workers.cloudflare.com)
+[![License](https://img.shields.io/badge/License-MIT-111111?style=for-the-badge&labelColor=f7f7f5)](LICENSE)
 
----
+<br />
 
-## 🎯 Acerca del Sitio
+**[Explorar en vivo](https://www.christopher.com.mx/landing)** · **[Proyectos](https://www.christopher.com.mx/projects)** · **[Biografía](https://www.christopher.com.mx/bio)** · **[Override](https://www.christopher.com.mx/override)** · **[Contacto](mailto:hola@christopher.com.mx)**
 
-Este portafolio digital es una plataforma completa que presenta mi experiencia profesional, proyectos innovadores y visión empresarial. Construido con **Astro**, **TypeScript**, CSS nativo y **Cloudflare Workers**, representa un showcase rápido y funcional de mis capacidades como desarrollador multiplataforma.
-
-### Propósito Principal
-
-- **Mostrar mis habilidades técnicas** a través de proyectos reales
-- **Presentar mi empresa Override** y sus soluciones digitales
-- **Conectar con potenciales clientes y colaboradores**
-- **Documentar mi trayectoria profesional** y reconocimientos
+</div>
 
 ---
 
-## ✨ Características Principales
+## Visión general
 
-### 🎨 Diseño Moderno
-- Interfaz minimalista con grid decorativo
-- Modo oscuro/claro automático
-- Animaciones suaves y transiciones fluidas
-- Responsive design (mobile-first)
-- Componentes reutilizables con shadcn/ui
+Portfolio profesional de **Christopher Alejandro Maldonado Chávez (Christopher Two)**, desarrollador multiplataforma en Uruapan, Michoacán, México. Diseñado con estética editorial monocromática (*Monochrome Proof Sheet*), enfocado en productos reales que llegan a producción en **Kotlin Multiplatform**, **Android**, **Web** e **IA**.
 
-### 🚀 Rendimiento
-- Astro SSR ejecutado en Cloudflare Workers
-- Optimización de imágenes automática
-- TypeScript para type-safety
-- Compilación eficiente para producción
+## Arquitectura y flujo
 
-### 🎭 Interactividad
-- Carruseles dinámicos de proyectos
-- Marquee animado de tecnologías
-- Nombre animado en la página de inicio
-- Navegaciones especializadas por sección
-
----
-
-## 📁 Estructura del Portafolio
-
-```
-src/
-├── app/
-│   ├── page.tsx                 # Página de inicio principal
-│   ├── layout.tsx               # Layout global
-│   ├── globals.css              # Estilos globales
-│   ├── bio/page.tsx             # Página sobre mí (biografía y metas)
-│   ├── projects/page.tsx        # Galería de todos los proyectos
-│   ├── projects/[slug]/page.tsx # Detalle individual de cada proyecto
-│   ├── override/page.tsx        # Página de Override (empresa)
-│   ├── lumi/page.tsx            # Producto Lumi
-│   ├── daelia/page.tsx          # Producto Daelia
-│   ├── spot/page.tsx            # Producto Spot
-│   └── spot/
-│       ├── privacy/page.tsx     # Política de privacidad
-│       ├── terms/page.tsx       # Términos de servicio
-│       └── versions/page.tsx    # Historial de versiones
-├── components/
-│   ├── AnimatedName.tsx         # Nombre animado
-│   ├── CarouselControls.tsx     # Controles de carrusel
-│   ├── Footer.tsx               # Pie de página
-│   ├── Header.tsx               # Encabezado
-│   ├── ProjectCard.tsx          # Tarjeta de proyecto
-│   ├── ProjectDetailClient.tsx  # Detalle de proyecto (cliente)
-│   ├── ProjectsCarousel.tsx     # Carrusel de proyectos
-│   ├── TechCard.tsx             # Tarjeta de tecnología/habilidad
-│   ├── TechMarquee.tsx          # Marquee de tecnologías
-│   ├── InfoPage.tsx             # Página de información genérica
-│   ├── theme-provider.tsx       # Proveedor de tema
-│   ├── theme-toggle.tsx         # Toggle de tema
-│   ├── [Logo components]        # Logos de los productos
-│   └── ui/                      # Componentes UI de shadcn/ui
-├── lib/
-│   ├── data.ts                  # Datos centralizados (proyectos, enlaces)
-│   ├── utils.ts                 # Funciones de utilidad
-│   └── placeholder-images.ts    # Gestión de imágenes
-├── hooks/
-│   ├── use-mobile.tsx           # Hook para detectar vista móvil
-│   └── use-toast.ts             # Hook para notificaciones toast
-└── content/
-    └── spot/                    # Contenido markdown de Spot
-        ├── privacy.md           # Privacidad de Spot
-        ├── terms.md             # Términos de Spot
-        └── versions.md          # Versiones de Spot
+```mermaid
+flowchart LR
+    U["Navegador (Escritorio / Móvil)"] --> A["Astro 7 SSR (Cloudflare Adapter)"]
+    U --> G["GSAP + ScrollTrigger\n(Hero → Topbar, Cards, Typewriter, ScrollRuler)"]
+    U --> P["Paper Shaders\n(Dithering Hero + HalftoneDots Nav)"]
+    A --> R2["Cloudflare R2\n(PROJECTS_BUCKET)"]
+    A --> GH["GitHub Public API\n(Actividad reciente)"]
+    GH_ACT["GitHub Actions\n(ci.yml / deploy.yml)"] -->|"wrangler deploy"| CF["Cloudflare Workers"]
 ```
 
----
-
-## 🚀 Proyectos Destacados
-
-### 1. **Override Health** (anteriormente Lyra)
-**Descripción:** Aplicación móvil para optimizar la interacción entre profesionales de la salud y sus pacientes.
-
-**Características:**
-- Digitalización de planes de alimentación
-- IA asistente para gestión de dieta
-- Recomendaciones personalizadas
-- Seguimiento continuo y eficaz
-
-**Tecnologías:** Jetpack Compose, Room, Firebase, Google Cloud Functions, Gemini API, MVI, Clean Architecture
-
-**Link:** https://www.override.com.mx
-
----
-
-### 2. **Override Pass**
-**Descripción:** Solución de control de accesos para empresas con máxima seguridad y eficiencia.
-
-**Características:**
-- Códigos QR encriptados con Stack3
-- Gestión centralizada de entradas/salidas
-- Implementación rápida sin infraestructura compleja
-- Control robusto y confiable
-
-**Tecnologías:** Compose Multiplatform, Room, Koin, Ktor, Firebase, Gemini API, MVVM, Wasm
-
-**Link:** https://pass.override.com.mx
-
----
-
-### 3. **Override Learning**
-**Descripción:** Plataforma educativa con IA para automatizar tareas administrativas y potenciar la labor docente.
-
-**Características:**
-- Generación y publicación automática de tareas en Google Classroom
-- Monitoreo de progreso de estudiantes
-- Ejercicios de refuerzo basados en desempeño
-- Modernización del proceso educativo
-
-**Tecnologías:** Compose Multiplatform, Koin, Ktor, Firebase, Classroom API, Gemini API, MVI, Clean Architecture
-
-**Link:** https://learning.override.com.mx
-
----
-
-### 4. **Override Logistics**
-**Descripción:** Plataforma integral para optimizar operaciones de logística en comercio internacional.
-
-**Características:**
-- App móvil para conductores y almacén
-- Visualización en Google TV para almacén
-- O360 (Suite Logística de Escritorio)
-- Desmaterialización de prueba de entrega
-- Optimización de rutas
-- Gestión de ciclos de carga
-- Infraestructura en nube de alta disponibilidad
-
-**Tecnologías:** Jetpack Compose, Koin, Ktor, Room, Firebase, Google Auth, Supabase, Gemini API, MVI, Clean Architecture, KMP JVM
-
-**Link:** https://logistics.override.com.mx
-
----
-
-### 5. **Override News**
-**Descripción:** Aplicación de noticias con IA para agilizar el consumo de información.
-
-**Características:**
-- Generación de resúmenes concisos con IA
-- Interfaz minimalista
-- Experiencia de usuario intuitiva
-- Mantenerse informado rápidamente
-
-**Tecnologías:** Jetpack Compose, Koin, Ktor, Firebase, Google Auth, Gemini API, MVI, Clean Architecture
-
-**Link:** https://www.override.com.mx
-
----
-
-### 6. **Override Mindstack**
-**Descripción:** Concurso de programación competitiva centrado en problemas NP-HARD.
-
-**Características:**
-- Diseño de problemas complejos
-- Evento con 30+ participantes
-- Logística completa del evento
-- Prueba de límites en lógica y algoritmia
-
-**Tecnologías:** Event Organization, Problem Design, Logistics
-
-**Link:** https://mindstack.override.com.mx
-
----
-
-### 7. **Override Shop**
-**Descripción:** Ecosistema de ventas completo con web, backend y app móvil administrable.
-
-**Características:**
-- Control total del contenido desde administrador
-- Reutilizable para cualquier ecommerce
-- Automatización con IA
-- Ecosistema modular
-
-**Tecnologías:** Jetpack Compose, Koin, Ktor, Firebase, Google Auth, Gemini API, MVI, Clean Architecture
-
-**Link:** https://shop.override.com.mx
-
----
-
-### 8. **Dependency**
-**Descripción:** Proyecto de código abierto para gestión eficiente de dependencias multiplataforma.
-
-**Características:**
-- Actualización de dependencias
-- Disponibles desde el inicio
-- Eficiencia en desarrollo
-
-**Tecnologías:** Vite, React, TypeScript, Tailwind, Vercel
-
-**Link:** https://dependency.christopher.com.mx
-
----
-
-### 9. **Cotizador Yazbek**
-**Descripción:** Solución rápida para cotizar productos de Yazbek (empresa EikoColors).
-
-**Características:**
-- Interfaz amigable y sencilla
-- Cotización rápida de productos
-- Fácil de usar
-
-**Tecnologías:** WasmJs, KMP, Koin, Clean Architecture, MVI, Github Actions
-
-**Link:** https://wasm.christopher.com.mx/cotizador/yazbek
-
----
-
-### 10. **EikoColors System**
-**Descripción:** Ecosistema integral para gestión administrativa y operativa de EikoColors.
-
-**Características:**
-- Gestión de usuarios
-- Control de trabajos y proyectos
-- Gestión de finanzas
-- Control total de la empresa
-
-**Tecnologías:** KMP JVM, Koin, Firebase, Room, Datastore
-
----
-
-### 11. **Daelia Experiments**
-**Descripción:** Serie de productos experimentales para probar nuevas tecnologías.
-
-**Subproductos:**
-- **Daelia Social:** Explicaciones sobre arquitectura de redes sociales
-- **Daelia Camera Color Detector:** Detector de colores por cámara
-- **Daelia Weather:** Reloj minimalista con hora y clima
-
-**Tecnologías:** Firebase, Google Auth, Jetpack Compose, Koin, MVI, WasmJs KMP, OpenWeather API, Ktor
-
-**Link:** /daelia
-
----
-
-### 12. **Lumi** (parte de Daelia)
-**Descripción:** Generador de códigos QR impulsado con IA.
-
-**Características:**
-- Generación rápida y sencilla
-- Interfaz intuitiva
-- Powered by Gemini API
-
-**Tecnologías:** Jetpack Compose, Koin, MVI, Firebase, Google Auth
-
-**Link:** /lumi
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-### Frontend
-- **Astro** - Renderizado rápido orientado a contenido
-- **TypeScript** - Type-safe development
-- **CSS nativo** - Sistema visual neo-brutalista propio
-
-### Backend & Cloud
-- **Ktor** - Framework Kotlin multiplataforma
-- **Firebase** - BaaS (Autenticación, Firestore, Storage)
-- **Google Cloud Functions** - Serverless computing
-- **Supabase** - Alternative/complemento a Firebase
-- **Docker** - Containerización
-
-### Mobile
-- **Jetpack Compose** - UI toolkit moderno
-- **Compose Multiplatform** - Desarrollo multiplataforma
-- **Kotlin Multiplataforma (KMP)** - Shared code
-- **Koin** - Dependency Injection
-- **Room** - Base de datos local
-- **DataStore** - Almacenamiento de preferencias
-
-### IA & APIs
-- **Gemini API** - Google's generative AI
-- **Google Classroom API** - Integración educativa
-- **OpenWeather API** - Datos meteorológicos
-- **Google Authentication** - Autenticación
-
-### DevOps & Tools
-- **GitHub Actions** - CI/CD
-- **Cloudflare Workers** - Deployment edge
-- **Docker** - Containerización
-- **pnpm** - Package manager
-
----
-
-## 📑 Secciones del Sitio
-
-### 🏠 Página de Inicio (`/`)
-La página principal presenta:
-- **Presentación personalizada** con nombre animado
-- **CTA buttons** - Ver trabajo, contacto, descargar CV
-- **Carrusel de proyectos destacados** (primeros 6 proyectos)
-- **Sección "Sobre Mí"** con biografía y foto
-- **Marquee de tecnologías** animado
-- **Tarjetas de habilidades técnicas:**
-  - Desarrollo Multiplataforma
-  - Desarrollo Móvil
-  - Backend y Cloud
-- **Reconocimientos y certificados:**
-  - 1er Lugar Innovatec 2025 (Salud) - Lyra
-  - 1er Lugar Innovatec 2025 (Tecnología) - Lerna
-  - Participante Destacado Innovatec 2023
-  - Ganador Concurso Interno 2024 (TecNM) - Lyra
-  - Ganador Concurso Interno 2023 (TecNM) - Quickness
-  - Participante Destacado Coding Cup México 2021 y 2025
-- **Sección de contacto** con enlaces a redes sociales
-
-### 👤 Página de Biografía (`/bio`)
-Información personal detallada:
-- **Infancia y trayectoria**
-- **Metas profesionales:**
-  - Corto plazo (4 años)
-  - Mediano plazo (10 años)
-  - Largo plazo (10+ años)
-- **Motivaciones y estrategias**
-
-### 🏢 Página de Override (`/override`)
-Presentación de la empresa Override con:
-- **Desglose de la palabra OVERRIDE:**
-  - O - RIGEN (Punto de partida para transformación digital)
-  - V - ISIÓN (Soluciones escalables)
-  - E - FICACIA (Resultados medibles)
-  - R - IGOR (Código robusto)
-  - R - APIDEZ (Despliegues ágiles)
-  - I - NNOVACIÓN (Creatividad sin límites)
-  - D - IÁLOGO (Comunicación cercana)
-  - E - XPRESIÓN (Marca auténtica)
-
-### 🎨 Página de Proyectos (`/projects`)
-Galería completa de todos los proyectos en grid de 2 columnas.
-
-### 📖 Detalle de Proyecto (`/projects/[slug]`)
-Página individual para cada proyecto con:
-- Título y descripción larga
-- Galería de imágenes
-- Tags de tecnologías
-- Link al proyecto
-- Información detallada
-
-### 💡 Página de Lumi (`/lumi`)
-Generador de códigos QR con IA.
-
-### 🔬 Página de Daelia (`/daelia`)
-Serie de experimentos y productos pequeños.
-
-### 📍 Página de Spot (`/spot`)
-Red social basada en ubicación con:
-- **Sentimiento** - Recuerdos anclados
-- **Proximidad** - Contenido geográfico
-- **Objetivo** - Visual-first
-- **Tesoros** - Geocaching emocional
-- Secciones de privacidad, términos y versiones
-
----
-
-## 🎓 Habilidades Técnicas
-
-### Desarrollo Multiplataforma
-- Compose Multiplataforma
-- Kotlin Multiplataforma (KMP)
-- Arquitectura modular y escalable
-
-### Desarrollo Móvil
-- Jetpack Compose (Mid-Senior)
-- Kotlin
-- Clean Architecture
-- MVI/MVVM patterns
-
-### Backend & Cloud
-- Ktor (Kotlin framework)
-- Firebase (Firestore, Auth, Storage)
-- Google Cloud
-- Supabase
-- Docker & containerización
-
-### Frontend Web
-- Next.js
-- TypeScript
-- React
-- Tailwind CSS
-
-### Especialidades
-- Clean Architecture
-- Multimodularity
-- Repository Pattern
-- Layered Model
-- DeepLinks
-- Wasm (WebAssembly)
-
----
-
-## 🔗 Enlaces Importantes
-
-### Redes Sociales
-- **Email:** hola@christopher.com.mx
-- **LinkedIn:** christopher-alejandro-maldonado-chavez
-- **GitHub:** christopher-two
-- **Instagram:** @christopher_two_
-- **YouTube:** ChristopherTwo
-- **TikTok:** @christopher_two
-- **Blog:** blog.christopher.com.mx
-- **Sitio Principal:** override.com.mx
-
-### Productos
-- **Override:** https://www.override.com.mx
-- **Lumi:** /lumi
-- **Daelia:** /daelia
-- **Spot:** /spot
-- **Override Pass:** https://pass.override.com.mx
-- **Override Learning:** https://learning.override.com.mx
-- **Override Logistics:** https://logistics.override.com.mx
-- **Override News:** https://www.override.com.mx
-- **Override Shop:** https://shop.override.com.mx
-- **Dependency:** https://dependency.christopher.com.mx
-- **Cotizador Yazbek:** https://wasm.christopher.com.mx/cotizador/yazbek
-
----
-
-## 🚀 Cómo Ejecutar
-
-### Requisitos
-- Node.js 20+
-- pnpm
-
-### Instalación
+## Características principales
+
+| Capacidad | Implementación | Archivo |
+| --- | --- | --- |
+| **Hero → Topbar con Dithering** | En escritorio (`>= 1024px`), las tarjetas cuadradas de navegación en el hero se encogen con **GSAP ScrollTrigger** hasta acoplarse en la topbar sobre una trama dithering; los paneles desplegables se activan solo al acoplarse arriba. | [Header.astro](src/components/Header.astro) |
+| **Imágenes Halftone en Navegación** | Cada sección (`Inicio`, `Trabajo`, `Sobre mí`, `Override`, `Contacto`) procesa su miniatura en tiempo real mediante `@paper-design/shaders-react` (`HalftoneDots`) sincronizado con el tema claro/oscuro. | [NavCardDots.tsx](src/components/NavCardDots.tsx) |
+| **Fondo Dithering en Hero** | Campo monocromático `Dithering` de Paper Shaders encapsulado en el hero con respuesta al scroll. | [HeroShader.tsx](src/components/HeroShader.tsx) |
+| **Barra de Scroll tipo Regla** | Regla fija vertical con 72 marcas reactivas a posición de scroll y cursor mediante `gsap.quickTo` + `mix-blend-mode: difference`. | [ScrollRuler.tsx](src/components/ScrollRuler.tsx) |
+| **Tipografía Typewriter y Cards** | Escritura letra por letra en encabezados y reducción progresiva de cards con imagen en `.projects-grid` vía GSAP. | [MotionEnhancer.tsx](src/components/MotionEnhancer.tsx) |
+| **Menú Móvil Flotante** | Botón flotante inferior derecho que despliega un menú a pantalla completa con iconos SVG y selector de tema integrado. | [global.css](src/styles/global.css) |
+| **Galería Dinámica R2** | Carga de portadas y galerías multimedia desde Cloudflare R2 (`PROJECTS_BUCKET`) con visor modal y soporte de video. | [r2.ts](src/lib/r2.ts) |
+
+## Stack tecnológico
+
+| Capa | Tecnologías |
+| --- | --- |
+| **Framework y UI** | Astro 7 (`output: "server"`), React 19, TypeScript 5.9, CSS nativo (tokens monocromáticos `White` / `Black`) |
+| **Animación y Shaders** | GSAP (`ScrollTrigger`), Motion, `@paper-design/shaders-react` (`Dithering`, `HalftoneDots`) |
+| **Edge y Almacenamiento** | Cloudflare Workers (`@astrojs/cloudflare`), Cloudflare R2, Wrangler v4 |
+| **SEO y Descubribilidad** | JSON-LD (`ProfilePage`, `SoftwareApplication`, `FAQPage`), `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt` |
+
+## Rutas principales
+
+| Ruta | Descripción |
+| --- | --- |
+| `/landing` | Página principal con hero editorial, selección de proyectos en grid, principios, FAQ, apps publicadas y actividad de GitHub |
+| `/projects` | Catálogo completo con filtros por tecnología y portadas dinámicas |
+| `/projects/[slug]` | Case study individual con galería multimedia desde Cloudflare R2 |
+| `/projects/resume` | Resumen técnico imprimible / exportable a PDF |
+| `/bio` | Trayectoria profesional, metas y enfoque de ingeniería |
+| `/override` · `/parse` · `/spot` · `/daelia` · `/lumi` | Páginas de marca, productos y documentación legal (`/spot/privacy`, `/spot/terms`, `/spot/versions`) |
+
+## Productos publicados en Google Play
+
+| Producto | Descripción | Enlace |
+| --- | --- | --- |
+| **Parse** | Lector de libros y PDFs para Android con traducción inteligente | [Google Play](https://play.google.com/store/apps/details?id=org.christophertwo.parse) |
+| **Helix** | Monitor de sistema para Android con métricas en tiempo real | [Google Play](https://play.google.com/store/apps/details?id=org.override.system.monitor) |
+| **Jukskani** | Plataforma inmobiliaria multiplataforma para asesores y compradores | [Google Play](https://play.google.com/store/apps/details?id=org.override.eje.android) |
+
+## Estructura del proyecto
+
+```text
+.
+├── .github/workflows/       # CI (pull requests) y Deploy directo a Cloudflare Workers
+├── docs/                    # Recursos visuales y blueprint
+├── src/
+│   ├── assets/images/       # Imagen de perfil y activos estáticos
+│   ├── components/          # Header, Footer, HeroShader, NavCardDots, ScrollRuler, MotionEnhancer, ProjectCard
+│   ├── content/spot/        # Documentación legal y versiones de Spot (Markdown)
+│   ├── data/                # Configuración del sitio, rutas, SEO y catálogo curado
+│   ├── features/            # Contenido y repositorios por dominio (bio, home, projects, brand-pages, spot)
+│   ├── layouts/             # BaseLayout con metadatos OpenGraph y Schema.org
+│   ├── lib/                 # Datos de proyectos, cliente GitHub y utilidades R2
+│   ├── pages/               # Rutas SSR, API proxy R2 (/api/r2-image) y endpoints SEO
+│   └── styles/              # Sistema de diseño monocromático en CSS nativo
+├── astro.config.ts
+├── wrangler.jsonc
+└── package.json
+```
+
+## Desarrollo local
+
+Requisitos: **Node.js >= 22** y **pnpm**.
 
 ```bash
-# Instalar dependencias
+git clone git@github.com:christopher-two/christopher-portfolio.git
+cd christopher-portfolio
 pnpm install
-
-# Ejecutar en desarrollo con el runtime de Cloudflare (puerto 9002)
 pnpm dev
-
-# Verificar Astro y los tipos de Wrangler
-pnpm check
-
-# Compilar para Cloudflare Workers
-pnpm build
-
-# Previsualizar el Worker compilado
-pnpm preview
-
-# Desplegar a Cloudflare Workers
-pnpm deploy
-
 ```
 
-El sitio estará disponible en `http://localhost:9002` en desarrollo.
+El servidor de desarrollo queda disponible en `http://localhost:9002`.
 
-### Configuración
+| Comando | Descripción |
+| --- | --- |
+| `pnpm dev` | Genera tipos de Wrangler e inicia Astro en el puerto `9002` |
+| `pnpm check` | Ejecuta `wrangler types` y `astro check` |
+| `pnpm build` | Verifica tipos y compila el worker para producción en `dist/` |
+| `pnpm preview` | Previsualiza el build compilado |
+| `pnpm deploy` | Compila y despliega directamente a Cloudflare Workers |
 
-- **Astro Config:** astro.config.ts
-- **TypeScript Config:** tsconfig.json
-- **Cloudflare Config:** wrangler.jsonc
-- **Variables locales:** .dev.vars
+## Despliegue automático (GitHub Actions)
 
----
+Cada `push` a `main` ejecuta [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) y publica en Cloudflare Workers. Para habilitarlo en un fork o nuevo entorno, define en **Settings → Secrets and variables → Actions**:
 
-## 🎯 Objetivos del Portafolio
+- `CLOUDFLARE_API_TOKEN` *(requerido)*: token con permisos de despliegue en Cloudflare Workers.
+- `CLOUDFLARE_ACCOUNT_ID` *(opcional)*: identificador de la cuenta cuando el token tiene acceso a múltiples cuentas.
 
-✅ Showcase de habilidades técnicas
-✅ Presentación de proyectos exitosos
-✅ Documentación de trayectoria profesional
-✅ Plataforma de contacto y colaboración
-✅ Visión empresarial (Override)
-✅ Experiencia de usuario moderna
+## Documentación adicional y comunidad
 
----
+- [CONTRIBUTING.md](CONTRIBUTING.md) — Guía para colaborar y verificar cambios
+- [SECURITY.md](SECURITY.md) — Reporte responsable de vulnerabilidades
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — Código de conducta
+- [DESIGN.md](DESIGN.md) y [PRODUCT.md](PRODUCT.md) — Sistema de diseño y principios de producto
+- [LICENSE](LICENSE) — Licencia MIT
 
-## 📝 Notas Adicionales
+## Contacto
 
-- El CV está disponible para descargar desde la página de inicio
-- El contenido está optimizado para dispositivos móviles
-- Se utiliza un sistema modular de componentes reutilizables
-- Las imágenes se cargan desde Supabase
-- El portafolio incluye múltiples temas de productos y soluciones
-
----
-
-## 📞 Contacto
-
-Para colaboraciones, consultoría o preguntas:
-
-- Email: hola@christopher.com.mx
-- LinkedIn: https://www.linkedin.com/in/christopher-alejandro-maldonado-chavez-8784ba37a/
-- GitHub: https://github.com/christopher-two
-
----
-
-**Última actualización:** 22 de enero de 2026
-
-Construido con ❤️ usando Astro, TypeScript, CSS nativo y Cloudflare Workers
+- **Web:** [christopher.com.mx](https://www.christopher.com.mx)
+- **Correo:** [hola@christopher.com.mx](mailto:hola@christopher.com.mx)
+- **GitHub:** [@christopher-two](https://github.com/christopher-two)
+- **LinkedIn:** [christopher-two](https://www.linkedin.com/in/christopher-two/)

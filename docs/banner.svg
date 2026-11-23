@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="420" viewBox="0 0 1280 420" fill="none">
+  <defs>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#111111" fill-opacity="0.16"/>
+    </pattern>
+    <pattern id="ruler" width="24" height="10" patternUnits="userSpaceOnUse">
+      <line x1="8" y1="5" x2="24" y2="5" stroke="#111111" stroke-opacity="0.32" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="420" fill="#F7F7F5"/>
+  <rect width="1280" height="420" fill="url(#dots)"/>
+  <rect x="24" y="24" width="1232" height="372" stroke="#111111" stroke-width="2" fill="none"/>
+
+  <!-- Right-edge scroll ruler motif -->
+  <rect x="1220" y="36" width="24" height="348" fill="url(#ruler)"/>
+  <line x1="1206" y1="210" x2="1244" y2="210" stroke="#111111" stroke-width="2"/>
+  <line x1="1212" y1="200" x2="1244" y2="200" stroke="#111111" stroke-width="1.4"/>
+  <line x1="1212" y1="220" x2="1244" y2="220" stroke="#111111" stroke-width="1.4"/>
+
+  <!-- Top meta bar -->
+  <rect x="56" y="54" width="10" height="10" fill="#111111"/>
+  <text x="78" y="63" fill="#5C5C58" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" letter-spacing="2">CHRISTOPHER TWO · PROOF SHEET PORTFOLIO</text>
+  <text x="1184" y="63" text-anchor="end" fill="#5C5C58" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" letter-spacing="2">URUAPAN, MX · PRODUCTION</text>
+  <line x1="56" y1="84" x2="1184" y2="84" stroke="#111111" stroke-width="1.5"/>
+
+  <!-- Bold display headline -->
+  <text x="56" y="168" fill="#111111" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="900" letter-spacing="-3">IDEAS QUE SE VUELVEN</text>
+  <rect x="56" y="186" width="492" height="78" fill="#111111"/>
+  <text x="74" y="246" fill="#F7F7F5" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="68" font-weight="900" letter-spacing="-3">PRODUCTOS.</text>
+
+  <!-- Halftone specimen blocks on the right -->
+  <g transform="translate(860, 126)">
+    <rect x="0" y="0" width="94" height="94" fill="#F7F7F5" stroke="#111111" stroke-width="1.5"/>
+    <circle cx="47" cy="40" r="22" fill="#111111" fill-opacity="0.88"/>
+    <text x="10" y="82" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="600">01 / INICIO</text>
+
+    <rect x="110" y="0" width="94" height="94" fill="#EBEBE7" stroke="#111111" stroke-width="1.5"/>
+    <rect x="134" y="18" width="46" height="40" fill="#111111"/>
+    <text x="120" y="82" fill="#111111" font-family="ui-monospace, monospace" font-size="10" font-weight="600">02 / TRABAJO</text>
+
+    <rect x="220" y="0" width="94" height="94" fill="#111111" stroke="#111111" stroke-width="1.5"/>
+    <polygon points="267,18 292,33 292,55 267,68 242,55 242,33" fill="#F7F7F5"/>
+    <text x="230" y="82" fill="#F7F7F5" font-family="ui-monospace, monospace" font-size="10" font-weight="600">03 / OVERRIDE</text>
+  </g>
+
+  <!-- Bottom footer strip -->
+  <line x1="56" y1="318" x2="1184" y2="318" stroke="#111111" stroke-width="1.5"/>
+  <text x="56" y="356" fill="#111111" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" letter-spacing="1.5">ASTRO 7  ·  GSAP  ·  PAPER SHADERS  ·  CLOUDFLARE WORKERS  ·  R2</text>
+  <rect x="984" y="334" width="200" height="36" fill="#111111"/>
+  <text x="1084" y="357" text-anchor="middle" fill="#F7F7F5" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" letter-spacing="1.5">CHRISTOPHER.COM.MX</text>
+</svg>
