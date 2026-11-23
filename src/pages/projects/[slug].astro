@@ -12,6 +12,8 @@ if (!project) return Astro.redirect('/projects');
 const media = await getProjectMedia(project.r2Folder);
 const coverImage = media.find((item) => !item.isVideo)?.url;
 const paragraphs = project.longDescription.split(/\n\n+/).filter(Boolean);
+const formatInline = (text: string) => text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+const bulletIcon = `<svg class="detail-list-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
 const projectSchema = [
   {
     '@type': 'CreativeWork',
@@ -45,9 +47,40 @@ const projectSchema = [
 
   <article class="article">
     <p class="detail-lede">{project.description}</p>
-    {paragraphs.map((paragraph) => (
-      paragraph.startsWith('### ') ? <h2>{paragraph.replace(/^### /, '')}</h2> : <p set:html={paragraph.replace(/\n- /g, '<br />• ').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')} />
-    ))}
+    {paragraphs.map((paragraph) => {
+      if (paragraph.startsWith('### ')) {
+        return <h2>{paragraph.replace(/^### /, '')}</h2>;
+      }
+      const lines = paragraph.split('\n');
+      const hasBullets = lines.some((line) => line.startsWith('- '));
+      if (!hasBullets) {
+        return <p set:html={formatInline(paragraph)} />;
+      }
+      const introLines: string[] = [];
+      const bulletLines: string[] = [];
+      for (const line of lines) {
+        if (line.startsWith('- ')) {
+          bulletLines.push(line.slice(2));
+        } else if (bulletLines.length === 0) {
+          introLines.push(line);
+        } else {
+          bulletLines[bulletLines.length - 1] += ` ${line}`;
+        }
+      }
+      return (
+        <>
+          {introLines.length > 0 && <p set:html={formatInline(introLines.join(' '))} />}
+          <ul class="detail-icon-list">
+            {bulletLines.map((item) => (
+              <li>
+                <Fragment set:html={bulletIcon} />
+                <span set:html={formatInline(item)} />
+              </li>
+            ))}
+          </ul>
+        </>
+      );
+    })}
     <a class="button button-ghost" href="/projects">← Volver al archivo</a>
   </article>
 

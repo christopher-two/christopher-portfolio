@@ -1,13 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectRow from '../components/ProjectRow.astro';
+import HeroShader from '../components/HeroShader';
+import ProjectCard from '../components/ProjectCard.astro';
 import { projects, recognitions, skills, socialLinks } from '../data/portfolio';
 import { portfolioFaq, publishedApps } from '../data/seo';
 import { siteUrl } from '../data/site';
 import { getGithubActivity } from '../lib/github';
+import { getProjectCoverImage } from '../lib/r2';
 
-const homeProjects = projects.slice(0, 10);
-const githubActivity = await getGithubActivity('christopher-two');
+const homeProjectsBase = projects.slice(0, 8);
+const [homeCovers, githubActivity] = await Promise.all([
+  Promise.all(homeProjectsBase.map((project) => getProjectCoverImage(project.r2Folder))),
+  getGithubActivity('christopher-two'),
+]);
+const homeProjects = homeProjectsBase.map((project, index) => ({
+  ...project,
+  coverImage: homeCovers[index] ?? '',
+}));
 const faqSchema = {
   '@type': 'FAQPage',
   '@id': `${siteUrl}/landing#faq`,
@@ -54,10 +63,16 @@ const landingSchema = [
 
 <BaseLayout title="Christopher Two · Software que llega a producción" description="Portfolio de Christopher Two: productos multiplataforma con Kotlin, Android, Astro, IA y Cloudflare." schema={landingSchema}>
   <section class="hero landing-hero">
-    <div class="wrap hero-grid">
+    <div class="hero-background" aria-hidden="true"><HeroShader client:load /></div>
+    <div class="wrap landing-hero-layout">
       <div class="hero-content">
-        <span class="eyebrow">Desarrollador multiplataforma · Uruapan, MX</span>
         <h1 class="display">Ideas que se vuelven <span class="accent">productos.</span></h1>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-meta">
+          <span class="eyebrow">Desarrollador multiplataforma · Uruapan, MX</span>
+          <p class="hero-statement">Kotlin Multiplatform, Android, Astro e IA. Software diseñado para llegar a producción.</p>
+        </div>
         <div class="hero-actions">
           <a class="button button-primary" href="/projects">Explorar trabajo ↗</a>
           <a class="button button-ghost" href="#contact">Hablemos ↓</a>
@@ -94,8 +109,8 @@ const landingSchema = [
         </div>
         <p class="section-note">Una selección de productos, sistemas y experimentos que han pasado de la idea a usuarios reales.</p>
       </div>
-      <div class="project-list">
-        {homeProjects.map((project, index) => <ProjectRow project={project} index={index} />)}
+      <div class="projects-grid">
+        {homeProjects.map((project, index) => <ProjectCard project={project} index={index} coverImage={project.coverImage} />)}
       </div>
       <a class="button button-primary button-spaced" href="/projects">Ver todos los proyectos ↗</a>
     </div>

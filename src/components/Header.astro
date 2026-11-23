@@ -1,21 +1,80 @@
 ---
 import { projects, socialLinks } from '../data/portfolio';
+import profileImage from '../assets/images/IMG_6195.jpg';
+import { getProjectCoverImage } from '../lib/r2';
+import NavCardDots from './NavCardDots';
 
 const workPreview = projects.slice(0, 3);
 const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHub'].includes(link.title));
+const isLanding = Astro.url.pathname === '/landing' || Astro.url.pathname === '/';
+
+const inicioFolder = projects[0]?.r2Folder ?? '';
+const trabajoFolder = projects[1]?.r2Folder ?? '';
+const overrideFolder = projects.find((p) => p.slug === 'override-web')?.r2Folder ?? projects[2]?.r2Folder ?? '';
+const contactoFolder = projects.find((p) => p.slug === 'spot')?.r2Folder ?? projects[3]?.r2Folder ?? '';
+
+const [inicioThumb, trabajoThumb, overrideThumb, contactoThumb] = isLanding
+  ? await Promise.all([
+      getProjectCoverImage(inicioFolder),
+      getProjectCoverImage(trabajoFolder),
+      getProjectCoverImage(overrideFolder),
+      getProjectCoverImage(contactoFolder),
+    ])
+  : ['', '', '', ''];
+const bioThumb = profileImage.src;
 ---
 
 <header class="site-header">
-  <div class="theme-switcher" role="group" aria-label="Tema visual">
-    <span class="theme-label">Tema</span>
-    <button class="theme-option" type="button" data-theme-choice="black" aria-pressed="false">Black</button>
-    <button class="theme-option" type="button" data-theme-choice="white" aria-pressed="false">White</button>
+  <div class="header-dither-bg" aria-hidden="true">
+    <span class="header-dither-dots"></span>
+    <span class="header-dither-fill"></span>
   </div>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <svg class="nav-toggle-icon nav-toggle-icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+      <line x1="4" y1="7" x2="20" y2="7" />
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="17" x2="20" y2="17" />
+    </svg>
+    <svg class="nav-toggle-icon nav-toggle-icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+    <span class="nav-toggle-label">Menú</span>
+  </button>
   <nav id="main-nav" class="nav-links" aria-label="Navegación principal">
-    <a class="nav-home" href="/landing" aria-label="Ir al inicio">Inicio</a>
+    <div class="nav-mobile-head">
+      <span class="mono">Navegación</span>
+      <span class="mono">CT / 2026</span>
+    </div>
+    <a class="nav-home" href="/landing" aria-label="Ir al inicio">
+      <span class="nav-card-thumb" aria-hidden="true">
+        {isLanding && <NavCardDots client:load section="inicio" imageSrc={inicioThumb} />}
+      </span>
+      <span class="nav-card-bar">
+        <span class="nav-label-group">
+          <svg class="nav-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z" />
+          </svg>
+          <span>Inicio</span>
+        </span>
+      </span>
+    </a>
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="work-preview">Trabajo <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="work-preview">
+        <span class="nav-card-thumb" aria-hidden="true">
+          {isLanding && <NavCardDots client:load section="trabajo" imageSrc={trabajoThumb} />}
+        </span>
+        <span class="nav-card-bar">
+          <span class="nav-label-group">
+            <svg class="nav-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+              <rect x="3" y="7" width="18" height="13" />
+              <path d="M8 7V4h8v3" />
+            </svg>
+            <span>Trabajo</span>
+          </span>
+          <span class="nav-arrow" aria-hidden="true">↘</span>
+        </span>
+      </button>
       <div id="work-preview" class="nav-panel nav-panel-work">
         <div class="nav-panel-heading"><span class="mono">Archivo / selección</span><span>{projects.length} proyectos</span></div>
         <div class="nav-work-list">
@@ -32,7 +91,21 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
     </div>
 
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="about-preview">Sobre mí <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="about-preview">
+        <span class="nav-card-thumb" aria-hidden="true">
+          {isLanding && <NavCardDots client:load section="bio" imageSrc={bioThumb} />}
+        </span>
+        <span class="nav-card-bar">
+          <span class="nav-label-group">
+            <svg class="nav-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 21v-2a6 6 0 0 1 16 0v2" />
+            </svg>
+            <span>Sobre mí</span>
+          </span>
+          <span class="nav-arrow" aria-hidden="true">↘</span>
+        </span>
+      </button>
       <div id="about-preview" class="nav-panel nav-panel-about">
         <span class="mono">La persona detrás del código</span>
         <span class="nav-panel-title">Christopher Two</span>
@@ -42,7 +115,22 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
     </div>
 
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="override-preview">Override <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="override-preview">
+        <span class="nav-card-thumb" aria-hidden="true">
+          {isLanding && <NavCardDots client:load section="override" imageSrc={overrideThumb} />}
+        </span>
+        <span class="nav-card-bar">
+          <span class="nav-label-group">
+            <svg class="nav-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+              <polygon points="12 2 21 7 21 17 12 22 3 17 3 7" />
+              <line x1="12" y1="22" x2="12" y2="12" />
+              <polyline points="21 7 12 12 3 7" />
+            </svg>
+            <span>Override</span>
+          </span>
+          <span class="nav-arrow" aria-hidden="true">↘</span>
+        </span>
+      </button>
       <div id="override-preview" class="nav-panel nav-panel-override">
         <span class="mono">Empresa / laboratorio</span>
         <span class="nav-panel-title">Software con intención.</span>
@@ -52,7 +140,21 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
     </div>
 
     <div class="nav-item">
-      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="contact-preview">Contacto <span aria-hidden="true">↘</span></button>
+      <button class="nav-trigger" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="contact-preview">
+        <span class="nav-card-thumb" aria-hidden="true">
+          {isLanding && <NavCardDots client:load section="contacto" imageSrc={contactoThumb} />}
+        </span>
+        <span class="nav-card-bar">
+          <span class="nav-label-group">
+            <svg class="nav-item-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" />
+              <polyline points="3 7 12 13 21 7" />
+            </svg>
+            <span>Contacto</span>
+          </span>
+          <span class="nav-arrow" aria-hidden="true">↘</span>
+        </span>
+      </button>
       <div id="contact-preview" class="nav-panel nav-panel-contact">
         <span class="mono">Abramos una conversación</span>
         <a class="nav-contact-email" href="mailto:hola@christopher.com.mx">hola@christopher.com.mx ↗</a>
@@ -62,17 +164,75 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
         <a class="nav-panel-link" href="/landing#contact">Ver contacto completo <span>↗</span></a>
       </div>
     </div>
+
+    <div class="nav-mobile-theme" role="group" aria-label="Tema visual">
+      <span class="nav-mobile-theme-label">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 3v18a9 9 0 0 0 0-18z" fill="currentColor" />
+        </svg>
+        <span>Tema</span>
+      </span>
+      <div class="nav-mobile-theme-options">
+        <button class="theme-option" type="button" data-theme-choice="black" aria-pressed="false">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+          </svg>
+          <span>Black</span>
+        </button>
+        <button class="theme-option" type="button" data-theme-choice="white" aria-pressed="false">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <line x1="12" y1="2" x2="12" y2="5" />
+            <line x1="12" y1="19" x2="12" y2="22" />
+            <line x1="2" y1="12" x2="5" y2="12" />
+            <line x1="19" y1="12" x2="22" y2="12" />
+            <line x1="4.9" y1="4.9" x2="7.1" y2="7.1" />
+            <line x1="16.9" y1="16.9" x2="19.1" y2="19.1" />
+            <line x1="19.1" y1="4.9" x2="16.9" y2="7.1" />
+            <line x1="7.1" y1="16.9" x2="4.9" y2="19.1" />
+          </svg>
+          <span>White</span>
+        </button>
+      </div>
+    </div>
   </nav>
+  <button class="theme-toggle-btn" type="button" data-theme-toggle aria-label="Cambiar tema visual" title="Cambiar tema">
+    <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+    </svg>
+    <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <line x1="12" y1="2" x2="12" y2="5" />
+      <line x1="12" y1="19" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="5" y2="12" />
+      <line x1="19" y1="12" x2="22" y2="12" />
+      <line x1="4.9" y1="4.9" x2="7.1" y2="7.1" />
+      <line x1="16.9" y1="16.9" x2="19.1" y2="19.1" />
+      <line x1="19.1" y1="4.9" x2="16.9" y2="7.1" />
+      <line x1="7.1" y1="16.9" x2="4.9" y2="19.1" />
+    </svg>
+  </button>
 </header>
 
 <script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
   type Theme = 'black' | 'white';
 
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const nav = document.querySelector<HTMLElement>('#main-nav');
   const items = document.querySelectorAll<HTMLElement>('.nav-item');
   const themeButtons = document.querySelectorAll<HTMLButtonElement>('[data-theme-choice]');
+  const themeToggleBtn = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const landingHero = document.querySelector<HTMLElement>('.landing-hero');
+  const headerEl = document.querySelector<HTMLElement>('.site-header');
   const isTheme = (value: string | undefined): value is Theme => value === 'black' || value === 'white';
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobileMenu = () => window.matchMedia('(max-width: 1023px)').matches;
 
   const applyTheme = (theme: Theme) => {
     document.documentElement.dataset.theme = theme;
@@ -81,6 +241,10 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
       button.classList.toggle('is-active', isActive);
       button.setAttribute('aria-pressed', String(isActive));
     });
+    if (themeToggleBtn) {
+      themeToggleBtn.setAttribute('aria-label', theme === 'black' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+      themeToggleBtn.setAttribute('aria-pressed', String(theme === 'black'));
+    }
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'black' ? '#0d0d0d' : '#f7f7f5');
     try {
       localStorage.setItem('portfolio-theme', theme);
@@ -96,29 +260,100 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
     });
   });
 
+  themeToggleBtn?.addEventListener('click', () => {
+    const current = document.documentElement.dataset.theme;
+    applyTheme(current === 'black' ? 'white' : 'black');
+  });
+
   const initialTheme = document.documentElement.dataset.theme;
   applyTheme(isTheme(initialTheme) ? initialTheme : 'white');
 
+  const setMenuOpen = (open: boolean) => {
+    if (!nav || !toggle) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+
+    if (open) {
+      nav.classList.add('is-open');
+      if (isMobileMenu()) {
+        document.body.style.overflow = 'hidden';
+        if (!prefersReducedMotion) {
+          gsap.killTweensOf(nav);
+          gsap.fromTo(
+            nav,
+            { opacity: 0, y: 18 },
+            { opacity: 1, y: 0, duration: 0.28, ease: 'power3.out' },
+          );
+          const menuRows = nav.querySelectorAll('.nav-mobile-head, .nav-home, .nav-item, .nav-mobile-theme');
+          gsap.fromTo(
+            menuRows,
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, ease: 'power3.out', clearProps: 'transform,opacity' },
+          );
+        }
+      }
+    } else {
+      document.body.style.overflow = '';
+      if (isMobileMenu() && !prefersReducedMotion && nav.classList.contains('is-open')) {
+        gsap.killTweensOf(nav);
+        gsap.to(nav, {
+          opacity: 0,
+          y: 12,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: () => {
+            nav.classList.remove('is-open');
+            gsap.set(nav, { clearProps: 'opacity,y' });
+          },
+        });
+      } else {
+        nav.classList.remove('is-open');
+      }
+    }
+  };
+
   toggle?.addEventListener('click', () => {
-    const isOpen = nav?.classList.toggle('is-open') ?? false;
-    toggle.setAttribute('aria-expanded', String(isOpen));
+    const currentlyOpen = nav?.classList.contains('is-open') ?? false;
+    setMenuOpen(!currentlyOpen);
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (isMobileMenu()) setMenuOpen(false);
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav?.classList.contains('is-open')) {
+      setMenuOpen(false);
+    }
   });
 
   items.forEach((item) => {
     const trigger = item.querySelector<HTMLButtonElement>('.nav-trigger');
-    item.addEventListener('focusin', () => trigger?.setAttribute('aria-expanded', 'true'));
+    item.addEventListener('focusin', () => {
+      if (headerEl?.classList.contains('is-in-hero')) return;
+      trigger?.setAttribute('aria-expanded', 'true');
+    });
     item.addEventListener('focusout', (event) => {
       if (!(event.relatedTarget instanceof Node) || !item.contains(event.relatedTarget)) {
         if (!item.classList.contains('is-open')) trigger?.setAttribute('aria-expanded', 'false');
       }
     });
-    item.addEventListener('mouseenter', () => trigger?.setAttribute('aria-expanded', 'true'));
+    item.addEventListener('mouseenter', () => {
+      if (headerEl?.classList.contains('is-in-hero')) return;
+      trigger?.setAttribute('aria-expanded', 'true');
+    });
     item.addEventListener('mouseleave', () => {
       if (!item.classList.contains('is-open') && !item.contains(document.activeElement)) {
         trigger?.setAttribute('aria-expanded', 'false');
       }
     });
     trigger?.addEventListener('click', () => {
+      if (headerEl?.classList.contains('is-in-hero') && landingHero) {
+        window.scrollTo({ top: Math.round(landingHero.offsetHeight * 0.88), behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        return;
+      }
       const isOpen = item.classList.toggle('is-open');
       trigger.setAttribute('aria-expanded', String(isOpen));
       items.forEach((other) => {
@@ -136,7 +371,209 @@ const contactPreview = socialLinks.filter((link) => ['Email', 'LinkedIn', 'GitHu
       item.classList.remove('is-open');
       item.querySelector<HTMLButtonElement>('.nav-trigger')?.setAttribute('aria-expanded', 'false');
     });
-    nav?.classList.remove('is-open');
-    toggle?.setAttribute('aria-expanded', 'false');
+    if (nav?.classList.contains('is-open')) setMenuOpen(false);
   });
+
+  // Desktop-only Hero -> Topbar GSAP ScrollTrigger transition on /landing
+  if (landingHero && headerEl && !prefersReducedMotion) {
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 1024px)', () => {
+      headerEl.classList.add('is-hero-docked');
+
+      const navLinksEl = headerEl.querySelector<HTMLElement>('.nav-links');
+      const ditherDots = headerEl.querySelector<HTMLElement>('.header-dither-dots');
+      const ditherFill = headerEl.querySelector<HTMLElement>('.header-dither-fill');
+      const navElements = [
+        headerEl.querySelector<HTMLElement>('.nav-home'),
+        ...headerEl.querySelectorAll<HTMLElement>('.nav-item'),
+      ].filter((el): el is HTMLElement => el !== null);
+
+      const heroWrap = landingHero.querySelector<HTMLElement>('.landing-hero-layout') ?? landingHero.querySelector<HTMLElement>('.wrap');
+      const heroContent = landingHero.querySelector<HTMLElement>('.hero-content');
+      const heroBottom = landingHero.querySelector<HTMLElement>('.hero-bottom');
+
+      // 1. Measure exact Topbar rects (neutral state)
+      const topbarRects = navElements.map((el) => el.getBoundingClientRect());
+      const btnTopbarRect = themeToggleBtn?.getBoundingClientRect() ?? null;
+
+      // 2. Measure exact Hero Grid rects using real CSS Grid
+      const scrollY = window.scrollY;
+      const contentRect = (heroContent ?? heroWrap ?? landingHero).getBoundingClientRect();
+      const bottomRect = (heroBottom ?? heroWrap ?? landingHero).getBoundingClientRect();
+      const innerLeft = Math.round(contentRect.left);
+      const innerRight = Math.min(Math.round(bottomRect.right), window.innerWidth - 64);
+      const innerWidth = Math.max(600, innerRight - innerLeft);
+      const contentBottomAbs = contentRect.bottom + scrollY;
+      const bottomTopAbs = bottomRect.top + scrollY;
+      const centerY = Math.round((contentBottomAbs + bottomTopAbs) / 2);
+
+      const gridGap = 18;
+      const cardSize = Math.min(176, Math.max(132, Math.floor((innerWidth - gridGap * (navElements.length - 1)) / navElements.length)));
+      const thumbHeight = cardSize - 62;
+      const totalGridWidth = cardSize * navElements.length + gridGap * (navElements.length - 1);
+      const gridLeft = Math.round(innerLeft + (innerWidth - totalGridWidth) / 2);
+      const gridTopAbs = Math.round(centerY - cardSize / 2);
+
+      headerEl.classList.add('is-hero-measure');
+      if (navLinksEl) {
+        gsap.set(navLinksEl, {
+          position: 'fixed',
+          left: gridLeft,
+          top: gridTopAbs,
+          width: totalGridWidth,
+          gridTemplateColumns: `repeat(${navElements.length}, ${cardSize}px)`,
+          gridAutoRows: `${cardSize}px`,
+          margin: 0,
+        });
+      }
+      const heroRects = navElements.map((el) => el.getBoundingClientRect());
+      const heroBtnLeft = btnTopbarRect ? Math.round(innerRight - btnTopbarRect.width) : 0;
+      const heroBtnTop = Math.round(contentRect.top + scrollY);
+
+      headerEl.classList.remove('is-hero-measure');
+      if (navLinksEl) gsap.set(navLinksEl, { clearProps: 'position,left,top,width,gridTemplateColumns,gridAutoRows,margin' });
+
+      headerEl.classList.add('is-in-hero');
+
+      const cardConfigs = navElements.map((el, index) => {
+        const cardEl = el.classList.contains('nav-home') ? el : el.querySelector<HTMLElement>('.nav-trigger');
+        const thumbEl = el.querySelector<HTMLElement>('.nav-card-thumb');
+        const thumbImg = thumbEl?.querySelector<HTMLElement>('img, astro-island, div, .nav-card-graphic') ?? null;
+        return {
+          el,
+          cardEl,
+          thumbEl,
+          thumbImg,
+          heroRect: heroRects[index],
+          topbarRect: topbarRects[index],
+        };
+      });
+
+      // Set initial Hero state with position: fixed so items never reflow siblings
+      if (themeToggleBtn && btnTopbarRect) {
+        gsap.set(themeToggleBtn, {
+          position: 'fixed',
+          zIndex: 42,
+          margin: 0,
+          left: heroBtnLeft,
+          top: heroBtnTop,
+        });
+      }
+
+      cardConfigs.forEach(({ el, cardEl, thumbEl, thumbImg, heroRect }) => {
+        gsap.set(el, {
+          position: 'fixed',
+          zIndex: 42,
+          margin: 0,
+          left: Math.round(heroRect.left),
+          top: Math.round(heroRect.top),
+          width: cardSize,
+          height: cardSize,
+        });
+        if (cardEl && cardEl !== el) {
+          gsap.set(cardEl, { width: '100%', height: '100%' });
+        }
+        if (thumbEl) {
+          gsap.set(thumbEl, { height: thumbHeight, marginBottom: 8, opacity: 1, borderWidth: 1 });
+        }
+        if (thumbImg) {
+          gsap.set(thumbImg, { scale: 1.06 });
+        }
+      });
+
+      if (ditherFill) {
+        gsap.set(ditherFill, { opacity: 0, clipPath: 'inset(0 0 100% 0)' });
+      }
+      if (ditherDots) {
+        gsap.set(ditherDots, { opacity: 0 });
+      }
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: landingHero,
+          start: 'top top',
+          end: () => `+=${Math.round(landingHero.offsetHeight * 0.85)}`,
+          scrub: 0.55,
+          onUpdate: (self) => {
+            const docked = self.progress >= 0.92;
+            headerEl.classList.toggle('is-in-hero', !docked);
+            if (!docked) {
+              items.forEach((item) => {
+                item.classList.remove('is-open');
+                item.querySelector<HTMLButtonElement>('.nav-trigger')?.setAttribute('aria-expanded', 'false');
+              });
+            }
+          },
+        },
+      });
+
+      if (themeToggleBtn && btnTopbarRect) {
+        tl.to(
+          themeToggleBtn,
+          {
+            left: Math.round(btnTopbarRect.left),
+            top: Math.round(btnTopbarRect.top),
+            ease: 'power3.inOut',
+          },
+          0,
+        );
+      }
+
+      cardConfigs.forEach(({ el, thumbEl, thumbImg, topbarRect }, index) => {
+        const stagger = index * 0.02;
+        tl.to(
+          el,
+          {
+            left: Math.round(topbarRect.left),
+            top: Math.round(topbarRect.top),
+            width: Math.ceil(topbarRect.width),
+            height: Math.ceil(topbarRect.height),
+            ease: 'power3.inOut',
+          },
+          stagger,
+        );
+        if (thumbEl) {
+          tl.to(
+            thumbEl,
+            { height: 0, marginBottom: 0, opacity: 0, borderWidth: 0, duration: 0.72, ease: 'power2.inOut' },
+            stagger,
+          );
+        }
+        if (thumbImg) {
+          tl.to(thumbImg, { scale: 0.85, duration: 0.72, ease: 'power2.inOut' }, stagger);
+        }
+      });
+
+      if (ditherDots) {
+        tl.to(ditherDots, { opacity: 0.9, duration: 0.45, ease: 'power2.in' }, 0.05)
+          .to(ditherDots, { opacity: 0, duration: 0.4, ease: 'power2.out' }, 0.55);
+      }
+
+      if (ditherFill) {
+        tl.to(
+          ditherFill,
+          { opacity: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.65, ease: 'power2.inOut' },
+          0.2,
+        );
+      }
+
+      const onResize = () => ScrollTrigger.refresh();
+      window.addEventListener('resize', onResize);
+
+      return () => {
+        window.removeEventListener('resize', onResize);
+        headerEl.classList.remove('is-hero-docked', 'is-in-hero', 'is-hero-measure');
+        if (navLinksEl) gsap.set(navLinksEl, { clearProps: 'all' });
+        if (themeToggleBtn) gsap.set(themeToggleBtn, { clearProps: 'all' });
+        cardConfigs.forEach(({ el, cardEl, thumbEl, thumbImg }) => {
+          gsap.set(el, { clearProps: 'all' });
+          if (cardEl && cardEl !== el) gsap.set(cardEl, { clearProps: 'all' });
+          if (thumbEl) gsap.set(thumbEl, { clearProps: 'all' });
+          if (thumbImg) gsap.set(thumbImg, { clearProps: 'all' });
+        });
+        if (ditherFill) gsap.set(ditherFill, { clearProps: 'all' });
+        if (ditherDots) gsap.set(ditherDots, { clearProps: 'all' });
+      };
+    });
+  }
 </script>

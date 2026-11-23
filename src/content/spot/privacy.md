@@ -656,21 +656,21 @@ Si es usuario en la Unión Europea y no está satisfecho con nuestra respuesta a
 
 En Spot, creemos que la privacidad es un derecho fundamental. Nos comprometemos a:
 
-✓ **Transparencia total** sobre nuestras prácticas de datos
+- **Transparencia total** sobre nuestras prácticas de datos
 
-✓ **Minimizar la recopilación** de datos a lo estrictamente necesario
+- **Minimizar la recopilación** de datos a lo estrictamente necesario
 
-✓ **Nunca vender** sus datos personales a terceros
+- **Nunca vender** sus datos personales a terceros
 
-✓ **Proteger** sus datos con medidas de seguridad robustas
+- **Proteger** sus datos con medidas de seguridad robustas
 
-✓ **Respetar** sus derechos de privacidad y responder a sus solicitudes
+- **Respetar** sus derechos de privacidad y responder a sus solicitudes
 
-✓ **Mejorar continuamente** nuestras prácticas de privacidad
+- **Mejorar continuamente** nuestras prácticas de privacidad
 
-✓ **Cumplir** con todas las leyes de protección de datos aplicables
+- **Cumplir** con todas las leyes de protección de datos aplicables
 
-✓ **Escuchar** sus preocupaciones y feedback sobre privacidad
+- **Escuchar** sus preocupaciones y feedback sobre privacidad
 
 ## 20. Reconocimiento y Consentimiento
 

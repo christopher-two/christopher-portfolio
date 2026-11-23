@@ -122,11 +122,11 @@ Construido con **Kotlin Multiplatform**, **Compose Multiplatform**, **Navigation
 
 ### Un ecosistema inmobiliario completo
 
-- 🏠 **Exploración de propiedades:** Feed con búsqueda, filtros, favoritos y detalle de inmuebles.
-- 🗺️ **Mapa interactivo:** Visualización geográfica con clustering y búsqueda por ubicación.
-- 👤 **Perfiles profesionales:** Registro y gestión de asesores, agencias y compradores.
-- 📊 **Operación de agencias:** Dashboard, estadísticas, propiedades y administración de agentes.
-- 💳 **Flujos comerciales:** Suscripciones, pagos con Stripe y validación KYC para perfiles profesionales.
+- **Exploración de propiedades:** Feed con búsqueda, filtros, favoritos y detalle de inmuebles.
+- **Mapa interactivo:** Visualización geográfica con clustering y búsqueda por ubicación.
+- **Perfiles profesionales:** Registro y gestión de asesores, agencias y compradores.
+- **Operación de agencias:** Dashboard, estadísticas, propiedades y administración de agentes.
+- **Flujos comerciales:** Suscripciones, pagos con Stripe y validación KYC para perfiles profesionales.
 
 ### Arquitectura multiplataforma
 
@@ -147,12 +147,12 @@ Las pantallas y galerías visuales quedan pendientes para una siguiente etapa.`,
 
 ### Acceso seguro y distribuido
 
-- 🔐 **QR dinámicos:** Tokens seguros para validar accesos sin contacto.
-- 📴 **Operación offline:** Aplicaciones y dispositivos preparados para trabajar sin conexión constante.
-- 📱 **Aplicación multiplataforma:** Gestión de credenciales, servicios y métodos de acceso.
-- 🧠 **EVA AI:** Automatización y análisis avanzado para usuarios y operadores.
-- 🚍 **Fleet Manager:** Integración con puntos de acceso y transporte público.
-- 📊 **Analytics y monitorización:** Lectura operativa de datos y estado de microservicios.
+- **QR dinámicos:** Tokens seguros para validar accesos sin contacto.
+- **Operación offline:** Aplicaciones y dispositivos preparados para trabajar sin conexión constante.
+- **Aplicación multiplataforma:** Gestión de credenciales, servicios y métodos de acceso.
+- **EVA AI:** Automatización y análisis avanzado para usuarios y operadores.
+- **Fleet Manager:** Integración con puntos de acceso y transporte público.
+- **Analytics y monitorización:** Lectura operativa de datos y estado de microservicios.
 
 El ecosistema integra **Kotlin Multiplatform**, **Compose Multiplatform**, **Ktor**, **Apollo Kotlin**, **Firebase**, **Room**, **DataStore**, **Koin**, **Wasm** y servicios backend en Cloud Run.`,
     r2Folder: "",
@@ -169,11 +169,11 @@ El ecosistema integra **Kotlin Multiplatform**, **Compose Multiplatform**, **Kto
 
 ### Aprender jugando
 
-- 🧩 **Puzzles de lógica:** Retos basados en compuertas AND, OR, XOR y sus combinaciones.
-- 📖 **Libro de runas:** Exploración de conceptos y elementos del universo narrativo.
-- 🧠 **Libro de lógica:** Tutoriales y ejemplos interactivos para aprender haciendo.
-- 🎮 **Controlador:** Experiencia complementaria para interactuar con el juego.
-- 🌐 **Experiencia web y app:** El contenido se distribuye entre una aplicación multiplataforma y una web interactiva.
+- **Puzzles de lógica:** Retos basados en compuertas AND, OR, XOR y sus combinaciones.
+- **Libro de runas:** Exploración de conceptos y elementos del universo narrativo.
+- **Libro de lógica:** Tutoriales y ejemplos interactivos para aprender haciendo.
+- **Controlador:** Experiencia complementaria para interactuar con el juego.
+- **Experiencia web y app:** El contenido se distribuye entre una aplicación multiplataforma y una web interactiva.
 
 La solución combina **Kotlin Multiplatform**, **Jetpack Compose**, **SwiftUI**, **Koin**, **Lottie**, **Kotlinx Serialization** y una experiencia web en JavaScript.`,
     r2Folder: "",
@@ -205,11 +205,11 @@ El proyecto queda integrado como producto de Override; sus pantallas y material 
 
 ### Señales del dispositivo
 
-- 🔋 **Batería:** Estado, nivel y métricas de energía.
-- 🧠 **Memoria y almacenamiento:** Lectura del uso de RAM y espacio disponible.
-- 📡 **Red:** Conectividad y estado de las interfaces de red.
-- 🧭 **Sensores:** Información de acelerómetro, giroscopio y sensores disponibles.
-- 🪪 **Identidad del sistema:** Datos del dispositivo y de su versión de Android.
+- **Batería:** Estado, nivel y métricas de energía.
+- **Memoria y almacenamiento:** Lectura del uso de RAM y espacio disponible.
+- **Red:** Conectividad y estado de las interfaces de red.
+- **Sensores:** Información de acelerómetro, giroscopio y sensores disponibles.
+- **Identidad del sistema:** Datos del dispositivo y de su versión de Android.
 
 ### Arquitectura
 
@@ -250,11 +250,11 @@ El sistema permite a los administradores gestionar promociones y configuraciones
 
 ### Capacidades del Sistema
 
-- ✅ **Gestión de Clientes:** Seguimiento detallado de clientes y sus respectivos trabajos.
-- ✅ **Administración de Catálogos:** Control total sobre los productos y stock.
-- ✅ **Logística e Inventario:** Gestión eficiente de distribuidores y movimientos de almacén.
-- ✅ **Generación de Reportes:** Creación automática de cotizaciones y reportes técnicos en formato PDF.
-- ✅ **Sincronización Híbrida:** Trabajo offline con base de datos local (**Room**) y sincronización en la nube con **Supabase**.
+- **Gestión de Clientes:** Seguimiento detallado de clientes y sus respectivos trabajos.
+- **Administración de Catálogos:** Control total sobre los productos y stock.
+- **Logística e Inventario:** Gestión eficiente de distribuidores y movimientos de almacén.
+- **Generación de Reportes:** Creación automática de cotizaciones y reportes técnicos en formato PDF.
+- **Sincronización Híbrida:** Trabajo offline con base de datos local (**Room**) y sincronización en la nube con **Supabase**.
 
 Desarrollado bajo una arquitectura multimodular siguiendo patrones de **Clean Architecture** y **MVI**, garantizando un mantenimiento sencillo y una escalabilidad sólida.`,
     r2Folder: "EikoColorsSystem",
@@ -272,19 +272,19 @@ Desarrollado bajo una arquitectura multimodular siguiendo patrones de **Clean Ar
 ### Gestión Integral de Servicios
 
 La aplicación permite administrar de forma centralizada todo el ecosistema de Atomo:
-- 🍽️ **Menús Digitales:** Edición de platos, precios y disponibilidad en tiempo real.
-- 🎨 **Portafolios:** Carga de proyectos y actualización de galerías visuales.
-- 🛍️ **Tiendas:** Control de inventario y visualización de productos.
-- 📄 **CVs e Invitaciones:** Personalización rápida de perfiles profesionales y eventos.
+- **Menús Digitales:** Edición de platos, precios y disponibilidad en tiempo real.
+- **Portafolios:** Carga de proyectos y actualización de galerías visuales.
+- **Tiendas:** Control de inventario y visualización de productos.
+- **CVs e Invitaciones:** Personalización rápida de perfiles profesionales y eventos.
 
 ### Excelencia Técnica (Android Nativo)
 
-- 🎨 **Jetpack Compose & Material 3:** Interfaz de usuario moderna con soporte para **temas dinámicos** y navegación adaptativa.
-- 🏗️ **Clean Architecture:** Estructura modular robusta que separa la lógica de negocio, datos y presentación.
-- 📴 **Offline-First con Room:** Capacidad completa de trabajo sin conexión con sincronización inteligente mediante **WorkManager**.
-- 🔐 **Supabase Integration:** Autenticación segura (Google ID), base de datos en tiempo real y almacenamiento escalable.
-- 🚀 **Kotlin Coroutines & Flow:** Programación asíncrona y reactiva para una experiencia de usuario fluida y sin bloqueos.
-- 🛡️ **Seguridad Biométrica:** Protección adicional de datos sensibles mediante huella digital o reconocimiento facial.
+- **Jetpack Compose & Material 3:** Interfaz de usuario moderna con soporte para **temas dinámicos** y navegación adaptativa.
+- **Clean Architecture:** Estructura modular robusta que separa la lógica de negocio, datos y presentación.
+- **Offline-First con Room:** Capacidad completa de trabajo sin conexión con sincronización inteligente mediante **WorkManager**.
+- **Supabase Integration:** Autenticación segura (Google ID), base de datos en tiempo real y almacenamiento escalable.
+- **Kotlin Coroutines & Flow:** Programación asíncrona y reactiva para una experiencia de usuario fluida y sin bloqueos.
+- **Seguridad Biométrica:** Protección adicional de datos sensibles mediante huella digital o reconocimiento facial.
 
 ### Sincronización Inteligente
 
@@ -303,19 +303,19 @@ Gracias a una arquitectura basada en **Workers**, la aplicación garantiza que c
 
 ### Ecosistema de Servicios
 
-- 🍽️ **Digital Menu:** Cartas interactivas y dinámicas para restaurantes.
-- 🎨 **Portfolio:** Galerías visuales sofisticadas para creativos.
-- 🛍️ **Shop:** Tiendas minimalistas con gestión de categorías.
-- 📄 **Digital CV:** Hojas de vida profesionales de alto impacto.
-- ✉️ **Invitations:** Sistema de invitaciones digitales con RSVP integrado.
+- **Digital Menu:** Cartas interactivas y dinámicas para restaurantes.
+- **Portfolio:** Galerías visuales sofisticadas para creativos.
+- **Shop:** Tiendas minimalistas con gestión de categorías.
+- **Digital CV:** Hojas de vida profesionales de alto impacto.
+- **Invitations:** Sistema de invitaciones digitales con RSVP integrado.
 
 ### Innovación Tecnológica
 
-- ⚡ **Astro v5:** Generación estática y dinámica ultrarrápida (SSR).
-- 🚀 **Incremental Static Regeneration (ISR):** Caché inteligente en el borde mediante **Cloudflare Global Network**.
-- 🎨 **Tailwind CSS v4:** Estilizado moderno y eficiente con tokens de diseño personalizados.
-- 🔐 **Supabase Backend:** Gestión robusta de base de datos, autenticación y tiempo real.
-- 🌐 **Cloudflare Infrastructure:** Despliegue en **Cloudflare Pages** para máxima disponibilidad global.
+- **Astro v5:** Generación estática y dinámica ultrarrápida (SSR).
+- **Incremental Static Regeneration (ISR):** Caché inteligente en el borde mediante **Cloudflare Global Network**.
+- **Tailwind CSS v4:** Estilizado moderno y eficiente con tokens de diseño personalizados.
+- **Supabase Backend:** Gestión robusta de base de datos, autenticación y tiempo real.
+- **Cloudflare Infrastructure:** Despliegue en **Cloudflare Pages** para máxima disponibilidad global.
 
 ### Experiencia Premium
 
@@ -335,16 +335,16 @@ La plataforma cuenta con múltiples plantillas (**Minimalist, Elegance, Modern, 
 ### Ecosistema Modular
 
 La plataforma se compone de cuatro pilares fundamentales:
-- 🚛 **App para Conductores:** Gestión de rutas, carga y prueba de entrega digital.
-- 📦 **App para Almacén:** Control de inventarios y ciclos de carga en tiempo real.
-- 📺 **TV Dashboard:** Visualización de estado de almacén optimizada para Google TV.
-- 🖥️ **O360 Suite:** Panel de administración central para la gestión de toda la operación.
+- **App para Conductores:** Gestión de rutas, carga y prueba de entrega digital.
+- **App para Almacén:** Control de inventarios y ciclos de carga en tiempo real.
+- **TV Dashboard:** Visualización de estado de almacén optimizada para Google TV.
+- **O360 Suite:** Panel de administración central para la gestión de toda la operación.
 
 ### Innovación y Tecnología
 
-- 🤖 **Inteligencia Artificial:** Funcionalidades avanzadas para la optimización de rutas y gestión eficiente.
-- 🏗️ **Clean Architecture:** Estructura multimodular basada en **Jetpack Compose** y **Kotlin Multiplatform (KMP)**.
-- 🔐 **Seguridad:** Autenticación robusta y sincronización en tiempo real mediante **Supabase** y **Firebase**.
+- **Inteligencia Artificial:** Funcionalidades avanzadas para la optimización de rutas y gestión eficiente.
+- **Clean Architecture:** Estructura multimodular basada en **Jetpack Compose** y **Kotlin Multiplatform (KMP)**.
+- **Seguridad:** Autenticación robusta y sincronización en tiempo real mediante **Supabase** y **Firebase**.
 
 Esta plataforma permite la desmaterialización total de procesos físicos, asegurando la competitividad y eficiencia en el sector de comercio internacional.`,
     r2Folder: "Override/Logistics",
@@ -363,11 +363,11 @@ Esta plataforma permite la desmaterialización total de procesos físicos, asegu
 
 Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrece una base de código única para Android, iOS, Desktop y Web.
 
-- 🚀 **Sincronización en Tiempo Real:** Gracias a la integración con **Supabase**, cualquier cambio en el menú se refleja instantáneamente en todas las plataformas.
-- 📴 **Filosofía Offline-First:** Capacidad de funcionamiento sin conexión con sincronización inteligente una vez recuperada la red.
-- 📸 **Gestión de Multimedia:** Subida y optimización de imágenes de platillos directamente desde la app.
-- 📐 **Arquitectura de Élite:** Construido sobre **Clean Architecture** y patrón **MVI**, garantizando una robustez industrial y escalabilidad sin límites.
-- 🎨 **Experiencia de Usuario:** Interfaz moderna y fluida desarrollada con **Compose Multiplatform**, siguiendo los estándares del *Override Design System*.
+- **Sincronización en Tiempo Real:** Gracias a la integración con **Supabase**, cualquier cambio en el menú se refleja instantáneamente en todas las plataformas.
+- **Filosofía Offline-First:** Capacidad de funcionamiento sin conexión con sincronización inteligente una vez recuperada la red.
+- **Gestión de Multimedia:** Subida y optimización de imágenes de platillos directamente desde la app.
+- **Arquitectura de Élite:** Construido sobre **Clean Architecture** y patrón **MVI**, garantizando una robustez industrial y escalabilidad sin límites.
+- **Experiencia de Usuario:** Interfaz moderna y fluida desarrollada con **Compose Multiplatform**, siguiendo los estándares del *Override Design System*.
 
 **Override Menu** no es solo un catálogo digital, es una herramienta de gestión multi-tenant que permite a cada establecimiento controlar su inventario, categorías y disponibilidad con la eficiencia de un sistema empresarial de alto nivel.`,
     r2Folder: "OverrideMenu",
@@ -384,18 +384,18 @@ Desarrollado bajo un ecosistema **Kotlin Multiplatform (KMP)**, el sistema ofrec
 
 ### Experiencia de Lectura Superior
 
-- 📖 **Lector Tipo Kindle**: Paginación inteligente y renderizado de texto optimizado para largas sesiones de lectura.
-- 📚 **Gestión de Biblioteca**: Organización intuitiva de libros locales y documentos personales.
-- 🌍 **Traducción con IA**: Integración con **Google ML Kit** para traducción de texto y detección de idioma en tiempo real.
-- ⚡ **Navegación de Nueva Generación**: Implementación pionera de la API **Navigation 3** de Jetpack Compose.
-- 🎨 **Estética Minimalista**: Diseño basado en **Material 3** con soporte para temas dinámicos que se adaptan a tu estilo.
+- **Lector Tipo Kindle**: Paginación inteligente y renderizado de texto optimizado para largas sesiones de lectura.
+- **Gestión de Biblioteca**: Organización intuitiva de libros locales y documentos personales.
+- **Traducción con IA**: Integración con **Google ML Kit** para traducción de texto y detección de idioma en tiempo real.
+- **Navegación de Nueva Generación**: Implementación pionera de la API **Navigation 3** de Jetpack Compose.
+- **Estética Minimalista**: Diseño basado en **Material 3** con soporte para temas dinámicos que se adaptan a tu estilo.
 
 ### Potencia Tecnológica
 
-- 🏗️ **Arquitectura Multimodular**: Construido bajo principios de **Clean Architecture** para una máxima escalabilidad y testabilidad.
-- 📄 **Soporte Avanzado de PDF**: Integración con **PDFBox-Android** para una gestión robusta de documentos digitales.
-- 🔐 **Autenticación con Google**: Sincronización segura y gestión de perfiles mediante Firebase.
-- 🚀 **Stack Moderno**: Uso extensivo de **Koin**, **Ktor**, **Room** y **DataStore** para una experiencia offline-first reactiva.
+- **Arquitectura Multimodular**: Construido bajo principios de **Clean Architecture** para una máxima escalabilidad y testabilidad.
+- **Soporte Avanzado de PDF**: Integración con **PDFBox-Android** para una gestión robusta de documentos digitales.
+- **Autenticación con Google**: Sincronización segura y gestión de perfiles mediante Firebase.
+- **Stack Moderno**: Uso extensivo de **Koin**, **Ktor**, **Room** y **DataStore** para una experiencia offline-first reactiva.
 
 Parse representa la evolución de la lectura móvil, combinando el minimalismo visual con una arquitectura de software industrial de alto nivel e inteligencia artificial integrada.`,
     r2Folder: "Parse",
@@ -416,22 +416,22 @@ Mediante **On-Device AI**, la app detecta, clasifica y visualiza sonidos ambient
 
 La clasificación de eventos sonoros se realiza con **YAMNet + TensorFlow Lite**, cubriendo más de 500 tipos de sonidos y priorizando por niveles:
 
-- 🔴 **Crítico:** alarmas de incendio, detectores de humo y sirenas de emergencia.
-- 🟡 **Advertencia:** timbres, golpes en la puerta y zumbadores.
-- 🔵 **Información:** llanto de bebé, risas y habla.
+- **Crítico:** alarmas de incendio, detectores de humo y sirenas de emergencia.
+- **Advertencia:** timbres, golpes en la puerta y zumbadores.
+- **Información:** llanto de bebé, risas y habla.
 
 ### Feedback Visual y Sensorial
 
-- 👁️ **Animación de Pulso:** visualización reactiva que cambia color e intensidad según la prioridad del sonido.
-- 🚨 **Notificaciones de Alto Impacto:** alertas heads-up incluso con la pantalla bloqueada.
-- 📳 **Patrones de Vibración:** 7 patrones personalizados (Doble, Triple, Latido y más) con intensidad ajustable.
-- 💡 **Alertas LED:** uso del flash para eventos críticos en entornos oscuros.
+- **Animación de Pulso:** visualización reactiva que cambia color e intensidad según la prioridad del sonido.
+- **Notificaciones de Alto Impacto:** alertas heads-up incluso con la pantalla bloqueada.
+- **Patrones de Vibración:** 7 patrones personalizados (Doble, Triple, Latido y más) con intensidad ajustable.
+- **Alertas LED:** uso del flash para eventos críticos en entornos oscuros.
 
 ### Personalización y Rendimiento
 
-- 🎨 **Temas Dinámicos:** soporte para Material You y modos claro/oscuro.
-- 🎚️ **Sensibilidad Ajustable:** control de ganancia del micrófono y umbrales de detección.
-- 🔋 **Optimización de Batería:** modos de ahorro y ejecución condicionada a carga cuando se requiere.
+- **Temas Dinámicos:** soporte para Material You y modos claro/oscuro.
+- **Sensibilidad Ajustable:** control de ganancia del micrófono y umbrales de detección.
+- **Optimización de Batería:** modos de ahorro y ejecución condicionada a carga cuando se requiere.
 
 ### Privacidad Primero
 
@@ -479,17 +479,17 @@ Override Sense combina accesibilidad, privacidad y arquitectura Android moderna 
 ### Experiencia de Compra Premium
 
 La plataforma combina presencia corporativa con capacidades de venta directa:
-- 🛒 **Gestión de Carrito:** Sistema dinámico y reactivo para una compra sin fricciones.
-- 📦 **Catálogo Inteligente:** Organización de productos por categorías y colecciones exclusivas (Decor, Life Style).
-- 📱 **Diseño Ultra-Responsivo:** Optimizada para dispositivos móviles y escritorio con una estética neobrutalista limpia.
-- 🎨 **Interfaz Moderna:** Uso de **Framer Motion** para animaciones fluidas y **Tailwind CSS v4** para un estilo vanguardista.
+- **Gestión de Carrito:** Sistema dinámico y reactivo para una compra sin fricciones.
+- **Catálogo Inteligente:** Organización de productos por categorías y colecciones exclusivas (Decor, Life Style).
+- **Diseño Ultra-Responsivo:** Optimizada para dispositivos móviles y escritorio con una estética neobrutalista limpia.
+- **Interfaz Moderna:** Uso de **Framer Motion** para animaciones fluidas y **Tailwind CSS v4** para un estilo vanguardista.
 
 ### Potencia Tecnológica
 
-- ⚡ **Next.js 15:** Rendimiento excepcional aprovechando las últimas capacidades del framework.
-- 🔥 **Firebase Integration:** Gestión de datos de productos y autenticación en tiempo real mediante Firestore.
-- 🛠️ **Arquitectura Robusta:** Código modular y escalable construido con **TypeScript**.
-- 🚀 **Rendimiento Optimizado:** Tiempos de respuesta mínimos y carga de imágenes eficiente desde R2.
+- **Next.js 15:** Rendimiento excepcional aprovechando las últimas capacidades del framework.
+- **Firebase Integration:** Gestión de datos de productos y autenticación en tiempo real mediante Firestore.
+- **Arquitectura Robusta:** Código modular y escalable construido con **TypeScript**.
+- **Rendimiento Optimizado:** Tiempos de respuesta mínimos y carga de imágenes eficiente desde R2.
 
 Este proyecto representa la madurez digital de EikoColors, integrando toda su oferta comercial en una única experiencia web de alto rendimiento.`,
     r2Folder: "EikoColorsSystem/web",
@@ -506,17 +506,17 @@ Este proyecto representa la madurez digital de EikoColors, integrando toda su of
 
 ### Experiencia de Usuario & Ventas
 
-- 🛒 **E-commerce Fluido:** Proceso de compra optimizado desde la selección hasta el checkout.
-- ✨ **Visualización de Charms:** Presentación detallada de productos con galerías de alta resolución.
-- 📱 **Mobile First:** Diseño totalmente adaptado para compras rápidas desde dispositivos móviles.
-- 🎨 **Estética Premium:** Interfaz elegante que resalta la exclusividad de los accesorios.
+- **E-commerce Fluido:** Proceso de compra optimizado desde la selección hasta el checkout.
+- **Visualización de Charms:** Presentación detallada de productos con galerías de alta resolución.
+- **Mobile First:** Diseño totalmente adaptado para compras rápidas desde dispositivos móviles.
+- **Estética Premium:** Interfaz elegante que resalta la exclusividad de los accesorios.
 
 ### Especificaciones Técnicas
 
-- ⚡ **Next.js 15 + React 19:** El stack más moderno para garantizar velocidad y SEO.
-- 🔥 **Firebase:** Gestión integral de base de datos, stock y autenticación de usuarios.
-- 🎨 **Tailwind CSS v4:** Estilizado de última generación con animaciones suaves mediante **Framer Motion**.
-- 🛠️ **Despliegue Profesional:** Infraestructura escalable para soportar picos de tráfico.
+- **Next.js 15 + React 19:** El stack más moderno para garantizar velocidad y SEO.
+- **Firebase:** Gestión integral de base de datos, stock y autenticación de usuarios.
+- **Tailwind CSS v4:** Estilizado de última generación con animaciones suaves mediante **Framer Motion**.
+- **Despliegue Profesional:** Infraestructura escalable para soportar picos de tráfico.
 
 Charmstar representa la combinación perfecta entre diseño estético y funcionalidad técnica, ofreciendo una solución de e-commerce robusta para el nicho de accesorios de lujo.`,
     r2Folder: "Charmstar",
@@ -533,10 +533,10 @@ Charmstar representa la combinación perfecta entre diseño estético y funciona
 
 ### Excelencia Técnica
 
-- ⚡ **React + Vite:** Rendimiento optimizado con tiempos de carga instantáneos.
-- 🎨 **Tailwind CSS:** Diseño neobrutalista moderno con tipografías técnicas y acentos de color vibrantes.
-- 🌐 **Vercel Deployment:** Infraestructura de alta disponibilidad y despliegue continuo.
-- 📱 **Responsive Design:** Adaptación fluida para ofrecer una experiencia premium en cualquier dispositivo.
+- **React + Vite:** Rendimiento optimizado con tiempos de carga instantáneos.
+- **Tailwind CSS:** Diseño neobrutalista moderno con tipografías técnicas y acentos de color vibrantes.
+- **Vercel Deployment:** Infraestructura de alta disponibilidad y despliegue continuo.
+- **Responsive Design:** Adaptación fluida para ofrecer una experiencia premium en cualquier dispositivo.
 
 ### Propósito del Proyecto
 
@@ -555,10 +555,10 @@ El sitio busca centralizar la identidad de Override, permitiendo a los clientes 
 
 ### Características del Cotizador
 
-- ⚡ **Cotización Instantánea:** Cálculo automático de precios basado en volumen y personalización.
-- 🎨 **Interfaz Intuitiva:** Experiencia de usuario optimizada para que los vendedores generen presupuestos en segundos.
-- 📱 **Multiplataforma:** Accesible desde cualquier navegador gracias a su arquitectura moderna.
-- 🏗️ **Arquitectura Robusta:** Construido con **Kotlin Multiplatform (WasmJs)** y siguiendo patrones de arquitectura limpia.
+- **Cotización Instantánea:** Cálculo automático de precios basado en volumen y personalización.
+- **Interfaz Intuitiva:** Experiencia de usuario optimizada para que los vendedores generen presupuestos en segundos.
+- **Multiplataforma:** Accesible desde cualquier navegador gracias a su arquitectura moderna.
+- **Arquitectura Robusta:** Construido con **Kotlin Multiplatform (WasmJs)** y siguiendo patrones de arquitectura limpia.
 
 Diseñado específicamente para el ecosistema de **EikoColors**, integrándose perfectamente en su flujo de trabajo diario para agilizar la atención al cliente.`,
     r2Folder: "CotizadorYazbek",
@@ -579,12 +579,12 @@ Los usuarios pueden crear "spots" (puntos de interés georreferenciados) con fot
 
 ### Características Técnicas
 
-- 🗺️ **Mapa Interactivo 3D:** Visualización avanzada con **Mapbox SDK** con inclinación de 60° y zoom dinámico.
-- 📸 **Cápsulas del Tiempo:** Creación de spots públicos o privados con hasta 10 imágenes y metadatos detallados.
-- 👥 **Ecosistema Social:** Sistema de amigos, búsqueda de usuarios y perfiles personalizados.
-- 🎨 **Personalización Material You:** Temas dinámicos que se adaptan al sistema y esquemas de color personalizados.
-- 🔐 **Seguridad Avanzada:** Autenticación con Google (Firebase) y protección biométrica opcional.
-- 📴 **Offline-First:** Sincronización inteligente y funcionamiento sin conexión gracias a **Room**.
+- **Mapa Interactivo 3D:** Visualización avanzada con **Mapbox SDK** con inclinación de 60° y zoom dinámico.
+- **Cápsulas del Tiempo:** Creación de spots públicos o privados con hasta 10 imágenes y metadatos detallados.
+- **Ecosistema Social:** Sistema de amigos, búsqueda de usuarios y perfiles personalizados.
+- **Personalización Material You:** Temas dinámicos que se adaptan al sistema y esquemas de color personalizados.
+- **Seguridad Avanzada:** Autenticación con Google (Firebase) y protección biométrica opcional.
+- **Offline-First:** Sincronización inteligente y funcionamiento sin conexión gracias a **Room**.
 
 Desarrollada con **Kotlin 2.3.0** y **Jetpack Compose**, siguiendo principios de **Clean Architecture** y patrones **MVI** para un estado de UI predecible y robusto.`,
     r2Folder: "Spot",
@@ -601,10 +601,10 @@ Desarrollada con **Kotlin 2.3.0** y **Jetpack Compose**, siguiendo principios de
 
 ### Eficiencia en el Desarrollo
 
-- 📦 **Catálogo Unificado:** Repositorio central con las dependencias más utilizadas y actualizadas del ecosistema.
-- ⚡ **Acceso Rápido:** Copia y pega configuraciones de Gradle instantáneamente.
-- 🏗️ **KMP Ready:** Enfocado en facilitar la configuración de proyectos multiplataforma.
-- 🛠️ **Curaduría Técnica:** Selección de librerías verificadas por la comunidad y expertos.
+- **Catálogo Unificado:** Repositorio central con las dependencias más utilizadas y actualizadas del ecosistema.
+- **Acceso Rápido:** Copia y pega configuraciones de Gradle instantáneamente.
+- **KMP Ready:** Enfocado en facilitar la configuración de proyectos multiplataforma.
+- **Curaduría Técnica:** Selección de librerías verificadas por la comunidad y expertos.
 
 Este proyecto nació de la necesidad de eficientar la fase inicial de configuración de software, permitiendo a los programadores centrarse en la lógica de negocio desde el primer minuto.`,
     r2Folder: "Dependency",
@@ -623,10 +623,10 @@ Este proyecto nació de la necesidad de eficientar la fase inicial de configurac
 
 Lerna se enfoca en devolver el tiempo valioso a los profesores, permitiéndoles concentrarse en lo que realmente importa: la enseñanza.
 
-- 🤖 **Integración con Gemini AI:** Utiliza modelos de lenguaje avanzados para la generación de contenido didáctico, resúmenes y asistencia personalizada.
-- ⚡ **Tecnología de Punta:** Desarrollado con **Kotlin Multiplatform (KMP)** y **Compose Multiplatform**, garantizando una experiencia fluida y nativa en la web mediante **WasmJs**.
-- 📐 **Arquitectura Robusta:** Implementado bajo principios de **Clean Architecture**, asegurando escalabilidad y facilidad de mantenimiento.
-- 🚀 **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación docente.
+- **Integración con Gemini AI:** Utiliza modelos de lenguaje avanzados para la generación de contenido didáctico, resúmenes y asistencia personalizada.
+- **Tecnología de Punta:** Desarrollado con **Kotlin Multiplatform (KMP)** y **Compose Multiplatform**, garantizando una experiencia fluida y nativa en la web mediante **WasmJs**.
+- **Arquitectura Robusta:** Implementado bajo principios de **Clean Architecture**, asegurando escalabilidad y facilidad de mantenimiento.
+- **Productividad Aumentada:** Flujos de trabajo diseñados para reducir drásticamente la carga administrativa y de planeación docente.
 
 Lerna representa el siguiente paso en la evolución educativa, donde la tecnología actúa como un aliado estratégico del docente para crear experiencias de aprendizaje más ricas y efectivas.`,
     r2Folder: "Lerna",
@@ -645,10 +645,10 @@ Lerna representa el siguiente paso en la evolución educativa, donde la tecnolog
 
 Bajo el lema "Desafía los Límites de la Lógica", MindStack propone un entorno de alta presión y complejidad técnica:
 
-- 🌌 **Temática Galáctica:** Una interfaz inmersiva inspirada en el espacio profundo que eleva la experiencia del usuario.
-- 🏆 **Programación de Élite:** Diseñado específicamente para detectar y potenciar el talento de alto rendimiento.
-- ⏱️ **Eventos en Tiempo Real:** Sistema de cuenta regresiva y registro dinámico para participantes.
-- 💻 **Arquitectura Moderna:** Construido con tecnologías web de última generación para garantizar estabilidad durante picos de tráfico de competidores.
+- **Temática Galáctica:** Una interfaz inmersiva inspirada en el espacio profundo que eleva la experiencia del usuario.
+- **Programación de Élite:** Diseñado específicamente para detectar y potenciar el talento de alto rendimiento.
+- **Eventos en Tiempo Real:** Sistema de cuenta regresiva y registro dinámico para participantes.
+- **Arquitectura Moderna:** Construido con tecnologías web de última generación para garantizar estabilidad durante picos de tráfico de competidores.
 
 El proyecto no es solo una landing page, sino el portal de entrada a un ecosistema de resolución de problemas donde la eficiencia del código y la creatividad lógica son los únicos requisitos para alcanzar la cima del ranking.`,
     r2Folder: "Mindstack",
@@ -667,10 +667,10 @@ El proyecto no es solo una landing page, sino el portal de entrada a un ecosiste
 
 Esta es una **colección curada de despliegues rápidos, prototipos de componentes y exploraciones visuales** que no necesariamente forman parte de un producto comercial, pero que demuestran capacidades técnicas específicas:
 
-- 🧪 **Laboratorio de UI:** Experimentación con nuevas librerías de animación como Framer Motion y Three.js.
-- 📐 **Arquitectura de Componentes:** Pruebas de patrones de diseño escalables y sistemas de diseño atómicos.
-- ⚡ **Rendimiento Web:** Optimizaciones extremas en frameworks como Next.js, Astro y Qwik.
-- 🎨 **Estética Visual:** Exploración de tendencias como Neobrutalismo, Glassmorphism y Bento Grids.
+- **Laboratorio de UI:** Experimentación con nuevas librerías de animación como Framer Motion y Three.js.
+- **Arquitectura de Componentes:** Pruebas de patrones de diseño escalables y sistemas de diseño atómicos.
+- **Rendimiento Web:** Optimizaciones extremas en frameworks como Next.js, Astro y Qwik.
+- **Estética Visual:** Exploración de tendencias como Neobrutalismo, Glassmorphism y Bento Grids.
 
 Cada pieza en esta colección representa un desafío técnico superado, desde micro-interacciones complejas hasta integraciones experimentales con APIs del navegador.`,
     r2Folder: "webs",
@@ -687,10 +687,10 @@ Cada pieza en esta colección representa un desafío técnico superado, desde mi
 
 ### Características del Juego
 
-- 🎲 **Desafío Aleatorio:** Generación dinámica de colores objetivo.
-- 🎨 **Interfaz Adaptativa:** Los elementos visuales cambian según el color actual para mantener la legibilidad.
-- 📊 **Feedback de Precisión:** Muestra un porcentaje de coincidencia exacto tras cada intento.
-- 🏗️ **Compose Multiplatform:** Ejecución nativa en Android, Desktop y Web (WasmJs).
+- **Desafío Aleatorio:** Generación dinámica de colores objetivo.
+- **Interfaz Adaptativa:** Los elementos visuales cambian según el color actual para mantener la legibilidad.
+- **Feedback de Precisión:** Muestra un porcentaje de coincidencia exacto tras cada intento.
+- **Compose Multiplatform:** Ejecución nativa en Android, Desktop y Web (WasmJs).
 
 Construido con una arquitectura **MVI** sólida para una gestión de estado predecible y reactiva.`,
     r2Folder: "colors",
@@ -709,10 +709,10 @@ Construido con una arquitectura **MVI** sólida para una gestión de estado pred
 
 La aplicación móvil actúa como el terminal de identidad y estado para los participantes:
 
-- 🤖 **Identificación Biométrica:** Integración de **Teachable Machine** para el reconocimiento facial, permitiendo el registro y validación de jugadores de forma automatizada.
-- ⏱️ **Estado en Tiempo Real:** Visualización dinámica del estatus del jugador (Vivo, Eliminado o Ganador) sincronizado instantáneamente con el sistema central.
-- 📱 **Experiencia Inmersiva:** Interfaz diseñada para mantener la tensión del juego, sirviendo como el vínculo directo entre el jugador y la lógica del puente físico.
-- 📡 **Sincronización Total:** Comunicación fluida con la suite de escritorio para asegurar que la identidad del jugador sea consistente en todo el ecosistema.
+- **Identificación Biométrica:** Integración de **Teachable Machine** para el reconocimiento facial, permitiendo el registro y validación de jugadores de forma automatizada.
+- **Estado en Tiempo Real:** Visualización dinámica del estatus del jugador (Vivo, Eliminado o Ganador) sincronizado instantáneamente con el sistema central.
+- **Experiencia Inmersiva:** Interfaz diseñada para mantener la tensión del juego, sirviendo como el vínculo directo entre el jugador y la lógica del puente físico.
+- **Sincronización Total:** Comunicación fluida con la suite de escritorio para asegurar que la identidad del jugador sea consistente en todo el ecosistema.
 
 Este componente demuestra nuestra capacidad para integrar visión por computadora en dispositivos móviles dentro de una solución de ingeniería compleja.`,
     r2Folder: "SquidGames/mobile",
@@ -731,11 +731,11 @@ Este componente demuestra nuestra capacidad para integrar visión por computador
 
 Desarrollada para ofrecer una gestión total de la experiencia, esta aplicación actúa como el cerebro del sistema:
 
-- 🖥️ **Gestión de Partida:** Control absoluto sobre el flujo del juego, configuración de reglas y administración de la lógica del puente.
-- 📊 **Monitorización Avanzada:** Visualización en tiempo real del estado de todos los jugadores y del sistema físico embebido.
-- 🔌 **Integración de Hardware:** Comunicación de bajo nivel para el control de los sensores y actuadores del puente físico.
-- 🏆 **Excelencia en Ingeniería:** Construida con un enfoque en la fiabilidad y el rendimiento, asegurando que la coordinación entre la app móvil y el hardware sea perfecta.
-- 📡 **Hub de Comunicación:** Centraliza la recepción de datos biométricos de las apps móviles y los sincroniza con las reacciones físicas del puente.
+- **Gestión de Partida:** Control absoluto sobre el flujo del juego, configuración de reglas y administración de la lógica del puente.
+- **Monitorización Avanzada:** Visualización en tiempo real del estado de todos los jugadores y del sistema físico embebido.
+- **Integración de Hardware:** Comunicación de bajo nivel para el control de los sensores y actuadores del puente físico.
+- **Excelencia en Ingeniería:** Construida con un enfoque en la fiabilidad y el rendimiento, asegurando que la coordinación entre la app móvil y el hardware sea perfecta.
+- **Hub de Comunicación:** Centraliza la recepción de datos biométricos de las apps móviles y los sincroniza con las reacciones físicas del puente.
 
 El software de escritorio representa el pilar de robustez del proyecto, demostrando nuestra capacidad para desarrollar sistemas de control centralizados para entornos interactivos complejos.`,
     r2Folder: "SquidGames/desktop",
@@ -752,20 +752,20 @@ El software de escritorio representa el pilar de robustez del proyecto, demostra
 
 ### Características del Sistema
 
-- 📚 **Gestión de Inventario:** Control completo de libros, revistas y otros materiales bibliográficos.
-- 👥 **Usuarios y Perfiles:** Administración de estudiantes, docentes y personal administrativo con roles específicos.
-- 🔄 **Préstamos y Devoluciones:** Sistema automatizado de préstamo y seguimiento de devoluciones con notificaciones.
-- 🔍 **Búsqueda Avanzada:** Motor de búsqueda eficiente para encontrar recursos rápidamente.
-- 📊 **Reportes y Estadísticas:** Gráficos de préstamos, categorías y actividad de usuarios.
+- **Gestión de Inventario:** Control completo de libros, revistas y otros materiales bibliográficos.
+- **Usuarios y Perfiles:** Administración de estudiantes, docentes y personal administrativo con roles específicos.
+- **Préstamos y Devoluciones:** Sistema automatizado de préstamo y seguimiento de devoluciones con notificaciones.
+- **Búsqueda Avanzada:** Motor de búsqueda eficiente para encontrar recursos rápidamente.
+- **Reportes y Estadísticas:** Gráficos de préstamos, categorías y actividad de usuarios.
 
 ### Tecnología y Arquitectura
 
-- ⚡ **Astro:** Framework moderno para sitios web estáticos ultra-rápidos con soporte para múltiples frameworks UI.
-- 🎨 **Vanilla CSS:** Sistema visual propio basado en componentes reutilizables.
-- 🔥 **Firebase:** Firestore y Authentication para operar el sistema en tiempo real.
-- 📈 **ApexCharts:** Visualización de métricas y tendencias del negocio.
-- ☁️ **Cloudflare:** Despliegue edge para una operación rápida y segura.
-- 📱 **Diseño Responsivo:** Compatible con dispositivos móviles, tablets y escritorio para acceso desde cualquier lugar.
+- **Astro:** Framework moderno para sitios web estáticos ultra-rápidos con soporte para múltiples frameworks UI.
+- **Vanilla CSS:** Sistema visual propio basado en componentes reutilizables.
+- **Firebase:** Firestore y Authentication para operar el sistema en tiempo real.
+- **ApexCharts:** Visualización de métricas y tendencias del negocio.
+- **Cloudflare:** Despliegue edge para una operación rápida y segura.
+- **Diseño Responsivo:** Compatible con dispositivos móviles, tablets y escritorio para acceso desde cualquier lugar.
 
 El sistema ha sido diseñado para mejorar la eficiencia operativa de la biblioteca escolar, reducir errores manuales y proporcionar una experiencia de usuario moderna tanto para administradores como para usuarios finales.`,
     r2Folder: "Cetis27Library",
@@ -782,12 +782,12 @@ El sistema ha sido diseñado para mejorar la eficiencia operativa de la bibliote
 
 ### Lo que hace el proyecto
 
-- 🧭 **Onboarding inicial** para configurar el flujo de uso.
-- 📍 **Seleccion y guardado de ubicaciones** de estacionamiento.
-- 🗂️ **Historial de lugares guardados** con pantalla de detalle por ticket.
-- 🗺️ **Mapa en Android con Mapbox** para crear spots de forma visual.
-- 🍎 **Soporte iOS** para la app compartida (mapa nativo iOS en estado base).
-- ⏱️ **Timer de ticket de parking** con notificaciones inteligentes.
+- **Onboarding inicial** para configurar el flujo de uso.
+- **Seleccion y guardado de ubicaciones** de estacionamiento.
+- **Historial de lugares guardados** con pantalla de detalle por ticket.
+- **Mapa en Android con Mapbox** para crear spots de forma visual.
+- **Soporte iOS** para la app compartida (mapa nativo iOS en estado base).
+- **Timer de ticket de parking** con notificaciones inteligentes.
 
 ### Timer y notificaciones de parking
 
@@ -816,11 +816,11 @@ El sistema ha sido diseñado para mejorar la eficiencia operativa de la bibliote
 
 ### Stack tecnico
 
-- ⚙️ **Kotlin Multiplatform + Compose Multiplatform**.
-- 🧩 **Koin** para inyeccion de dependencias.
-- 💾 **Room y DataStore** para persistencia local.
-- 🌐 **Ktor** para networking.
-- 🗺️ **Mapbox (maps-compose)** en Android.
+- **Kotlin Multiplatform + Compose Multiplatform**.
+- **Koin** para inyeccion de dependencias.
+- **Room y DataStore** para persistencia local.
+- **Ktor** para networking.
+- **Mapbox (maps-compose)** en Android.
 
 ### Arquitectura y estructura
 

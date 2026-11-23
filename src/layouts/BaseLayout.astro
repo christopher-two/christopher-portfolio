@@ -1,8 +1,8 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import HeroShader from '../components/HeroShader';
 import MotionEnhancer from '../components/MotionEnhancer';
+import ScrollRuler from '../components/ScrollRuler';
 import profileImage from '../assets/images/IMG_6195.jpg';
 import { authorSchema, organizationSchema, siteDescription, siteName, siteUrl } from '../data/site';
 import { getBreadcrumbItems, serializeJsonLd } from '../lib/seo';
@@ -150,7 +150,6 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
       FORM: Monochrome editorial index, assigned direction 4, seed f62ae0ba; motion is a page entering and settling into place.
       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
     -->
-    <div class="site-background" aria-hidden="true"><HeroShader client:load /></div>
     <a class="skip-link" href="#main-content">Saltar al contenido</a>
     <div class="site-content">
       <Header />
@@ -160,5 +159,6 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
       <Footer />
       <MotionEnhancer client:load />
     </div>
+    <ScrollRuler client:load />
   </body>
 </html>

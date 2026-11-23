@@ -2,9 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { getUnifiedTechFilters, projects } from '../../data/portfolio';
+import { getProjectCoverImage } from '../../lib/r2';
 import { siteUrl } from '../../data/site';
 
 const filters = getUnifiedTechFilters(projects).slice(0, 14);
+const coverImages = await Promise.all(projects.map((project) => getProjectCoverImage(project.r2Folder)));
 
 const projectsSchema = [
   {
@@ -42,7 +44,7 @@ const projectsSchema = [
   </section>
   <section class="section">
     <div class="wrap projects-grid">
-      {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+      {projects.map((project, index) => <ProjectCard project={project} index={index} coverImage={coverImages[index]} />)}
     </div>
   </section>
   <script>

@@ -44,6 +44,7 @@ export async function getProjectMedia(folder: string, maxItems = Number.POSITIVE
 }
 
 export async function getProjectCoverImage(folder: string): Promise<string> {
-  const [cover] = await getProjectMedia(folder, 1);
-  return cover?.url ?? '';
+  const media = await getProjectMedia(folder, 8);
+  const image = media.find((item) => !item.isVideo);
+  return image?.url ?? '';
 }
