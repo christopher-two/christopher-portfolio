@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects, socialLinks } from '../data/portfolio';
+import { publishedApps } from '../data/seo';
+import { siteUrl } from '../data/site';
+
+const featuredProjects = projects.slice(0, 6);
+
+const enFaq = [
+  {
+    question: 'Who is Christopher Two?',
+    answer:
+      'Christopher Two is the professional brand of Christopher Alejandro Maldonado Chávez, a multiplatform software engineer based in Uruapan, Michoacán, Mexico, specializing in Kotlin Multiplatform, Jetpack Compose, Android, Astro, and Cloudflare Workers.',
+  },
+  {
+    question: 'What kind of products does he build?',
+    answer:
+      'Production-ready mobile apps, cross-platform systems, web platforms, and AI-enabled tools combining Clean Architecture, Ktor, Firebase, Supabase, and edge deployment.',
+  },
+  {
+    question: 'Which apps are published on Google Play?',
+    answer:
+      'Published Android products include Parse (book and PDF reader with smart translation), Helix (Android system monitor), and Jukskani (real estate platform).',
+  },
+  {
+    question: 'How can teams collaborate with Christopher Two?',
+    answer:
+      'Christopher collaborates remotely on new products or existing codebases needing architecture, cross-platform delivery, or UI engineering via hola@christopher.com.mx.',
+  },
+];
+
+const enSchema = [
+  {
+    '@type': 'ProfilePage',
+    '@id': `${siteUrl}/en#profile`,
+    url: `${siteUrl}/en`,
+    name: 'Christopher Two · Multiplatform Software Engineer',
+    inLanguage: 'en',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    mainEntity: { '@id': `${siteUrl}/bio#person` },
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${siteUrl}/en#faq`,
+    inLanguage: 'en',
+    mainEntity: enFaq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  lang="en"
+  title="Christopher Two · Multiplatform Software Engineer"
+  description="Portfolio of Christopher Two (Christopher Alejandro Maldonado Chávez): Kotlin Multiplatform, Android, Astro, AI, and Cloudflare Workers products."
+  schema={enSchema}
+>
+  <section class="page-intro">
+    <div class="wrap">
+      <span class="eyebrow">Multiplatform Software Engineer · Uruapan, MX</span>
+      <h1 class="section-title">Ideas that ship to production.</h1>
+      <p>
+        I build cross-platform mobile and web products using Kotlin Multiplatform, Jetpack Compose, Astro, TypeScript, and Cloudflare Workers.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="/projects">Explore projects ↗</a>
+        <a class="button button-ghost" href="/landing">Versión en español ↗</a>
+        <a class="button button-ghost" href="mailto:hola@christopher.com.mx">Contact ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2 class="section-title">Production systems &amp; apps.</h2>
+        </div>
+        <p class="section-note">Case studies across Kotlin Multiplatform, Android, Astro, and Cloudflare.</p>
+      </div>
+      <div class="project-list">
+        {featuredProjects.map((project, index) => (
+          <a class="project-row" href={`/projects/${project.slug}`}>
+            <span class="project-number">{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="project-name">{project.title}</h3>
+              <p class="project-description">{project.description}</p>
+            </div>
+            <div class="project-tags">
+              {project.tags.slice(0, 2).map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section apps-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Google Play</span>
+          <h2 class="section-title">Published Android apps.</h2>
+        </div>
+        <p class="section-note">Live products available for Android users.</p>
+      </div>
+      <div class="published-apps">
+        {publishedApps.map((app) => (
+          <article class={`published-app ${app.tone}`}>
+            <div class="published-app-top">
+              <span class="mono">{app.index} / Android</span>
+              <span class="published-app-mark">{app.mark}</span>
+            </div>
+            <div>
+              <h3>{app.name}</h3>
+              <p>{app.description}</p>
+            </div>
+            <a class="published-app-link" href={app.href} target="_blank" rel="noreferrer">View on Google Play <span>↗</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">FAQ</span>
+          <h2 class="section-title">Direct answers.</h2>
+        </div>
+        <p class="section-note">Overview of stack, availability, and published software.</p>
+      </div>
+      <div class="faq-list">
+        {enFaq.map((item) => (
+          <article class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-title">Let's ship something solid.</h2>
+        <a class="button button-primary contact-cta" href="mailto:hola@christopher.com.mx">hola@christopher.com.mx ↗</a>
+      </div>
+      <div class="social-list">
+        {socialLinks.map((link) => (
+          <a class="social-link" href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noreferrer' : undefined}>
+            <span>{link.title}</span>
+            <span>{link.handle} ↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

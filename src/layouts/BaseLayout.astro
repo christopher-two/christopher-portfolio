@@ -3,7 +3,6 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import MotionEnhancer from '../components/MotionEnhancer';
 import ScrollRuler from '../components/ScrollRuler';
-import profileImage from '../assets/images/IMG_6195.jpg';
 import { authorSchema, organizationSchema, siteDescription, siteName, siteUrl } from '../data/site';
 import { getBreadcrumbItems, serializeJsonLd } from '../lib/seo';
 import '../styles/global.css';
@@ -18,6 +17,7 @@ interface Props {
   ogType?: 'website' | 'article';
   articleSection?: string;
   modifiedTime?: string;
+  lang?: 'es' | 'en';
 }
 
 const {
@@ -30,10 +30,14 @@ const {
   ogType = 'website',
   articleSection,
   modifiedTime,
+  lang = 'es',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
-const socialImage = new URL(image ?? profileImage.src, siteUrl).href;
+const socialImage = new URL(image ?? '/og-image.png', siteUrl).href;
+const isDefaultSocialImage = !image;
 const socialImageAlt = imageAlt ?? `${title} · ${siteName}`;
+const normalizedPathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const hasEnglishCounterpart = normalizedPathname === '/landing' || normalizedPathname === '/en';
 const customSchema = Array.isArray(schema) ? schema : [schema];
 const breadcrumbs = getBreadcrumbItems(Astro.url.pathname, title);
 const robotsContent = noindex
@@ -79,17 +83,18 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="author" content="Christopher Alejandro Maldonado Chávez" />
     <meta name="application-name" content={siteName} />
-    <meta name="content-language" content="es-MX" />
+    <meta name="content-language" content={lang === 'en' ? 'en' : 'es-MX'} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Bricolage+Grotesque:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
     <meta name="robots" content={robotsContent} />
     <meta name="googlebot" content={robotsContent} />
     <meta name="bingbot" content={robotsContent} />
@@ -112,6 +117,9 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
     </script>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d0d0d'/%3E%3Ctext x='50' y='67' text-anchor='middle' font-size='55' fill='white'%3ECT%3C/text%3E%3C/svg%3E" />
     <link rel="canonical" href={canonical} />
+    {hasEnglishCounterpart && <link rel="alternate" hreflang="es-MX" href={`${siteUrl}/landing`} />}
+    {hasEnglishCounterpart && <link rel="alternate" hreflang="en" href={`${siteUrl}/en`} />}
+    {hasEnglishCounterpart && <link rel="alternate" hreflang="x-default" href={`${siteUrl}/landing`} />}
     <link rel="alternate" type="text/plain" href={`${siteUrl}/llms.txt`} title="AI-readable site summary" />
     <link rel="alternate" type="text/plain" href={`${siteUrl}/llms-full.txt`} title="Full AI-readable site content" />
     <link rel="sitemap" type="application/xml" href={`${siteUrl}/sitemap.xml`} />
@@ -132,6 +140,8 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
     {ogType === 'article' && articleSection && <meta property="article:section" content={articleSection} />}
     {ogType === 'article' && modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta property="og:image" content={socialImage} />
+    {isDefaultSocialImage && <meta property="og:image:width" content="1200" />}
+    {isDefaultSocialImage && <meta property="og:image:height" content="630" />}
     <meta property="og:image:alt" content={socialImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />

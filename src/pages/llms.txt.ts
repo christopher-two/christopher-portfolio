@@ -52,7 +52,8 @@ ${projects.map((project) => `- [${project.title}](${siteUrl}/projects/${project.
 
 ## Páginas prioritarias
 
-- [Inicio y contacto](${siteUrl}/landing)
+- [Inicio y contacto (ES)](${siteUrl}/landing)
+- [English overview (EN)](${siteUrl}/en)
 - [Sobre Christopher](${siteUrl}/bio)
 - [Archivo completo de proyectos](${siteUrl}/projects)
 - [Override, empresa de software](${siteUrl}/override)

@@ -5,6 +5,7 @@ export type SiteRoute = {
   label: string;
   description: string;
   includeInSitemap?: boolean;
+  lastmod?: string;
 };
 
 export type SiteRouteGroup = {
@@ -12,10 +13,13 @@ export type SiteRouteGroup = {
   routes: SiteRoute[];
 };
 
+const DEFAULT_LASTMOD = '2026-11-23';
+
 const projectRoutes: SiteRoute[] = projects.map((project) => ({
   path: `/projects/${project.slug}`,
   label: project.title,
   description: project.description,
+  lastmod: DEFAULT_LASTMOD,
 }));
 
 export const siteRouteGroups: SiteRouteGroup[] = [
@@ -23,34 +27,35 @@ export const siteRouteGroups: SiteRouteGroup[] = [
     label: 'Entradas',
     routes: [
       { path: '/', label: 'Entrada principal', description: 'Redirige a la landing principal.', includeInSitemap: false },
-      { path: '/landing', label: 'Inicio', description: 'Presentación, trabajo, productos y contacto.' },
-      { path: '/routes', label: 'Mapa del sitio', description: 'Índice completo de las rutas públicas del proyecto.' },
+      { path: '/landing', label: 'Inicio', description: 'Presentación, trabajo, productos y contacto.', lastmod: DEFAULT_LASTMOD },
+      { path: '/en', label: 'English overview', description: 'English summary of Christopher Two, projects, and published apps.', lastmod: DEFAULT_LASTMOD },
+      { path: '/routes', label: 'Mapa del sitio', description: 'Índice completo de las rutas públicas del proyecto.', lastmod: DEFAULT_LASTMOD },
     ],
   },
   {
     label: 'Portafolio',
     routes: [
-      { path: '/bio', label: 'Sobre mí', description: 'Historia, experiencia y forma de trabajar.' },
-      { path: '/projects', label: 'Proyectos', description: 'Archivo completo de proyectos y case studies.' },
-      { path: '/projects/resume', label: 'Resumen de proyectos', description: 'Vista resumida e imprimible del trabajo.' },
+      { path: '/bio', label: 'Sobre mí', description: 'Historia, experiencia y forma de trabajar.', lastmod: '2026-08-29' },
+      { path: '/projects', label: 'Proyectos', description: 'Archivo completo de proyectos y case studies.', lastmod: DEFAULT_LASTMOD },
+      { path: '/projects/resume', label: 'Resumen de proyectos', description: 'Vista resumida e imprimible del trabajo.', lastmod: DEFAULT_LASTMOD },
     ],
   },
   {
     label: 'Productos y laboratorios',
     routes: [
-      { path: '/override', label: 'Override', description: 'Empresa y productos de software.' },
-      { path: '/daelia', label: 'Daelia', description: 'Laboratorio de experimentos digitales.' },
-      { path: '/lumi', label: 'Lumi', description: 'Experimento de IA, QR y experiencias interactivas.' },
-      { path: '/parse', label: 'Parse', description: 'Lector de libros y PDFs para Android.' },
-      { path: '/spot', label: 'Spot', description: 'Producto de geocaching emocional.' },
+      { path: '/override', label: 'Override', description: 'Empresa y productos de software.', lastmod: '2026-08-29' },
+      { path: '/daelia', label: 'Daelia', description: 'Laboratorio de experimentos digitales.', lastmod: '2026-08-29' },
+      { path: '/lumi', label: 'Lumi', description: 'Experimento de IA, QR y experiencias interactivas.', lastmod: '2026-08-29' },
+      { path: '/parse', label: 'Parse', description: 'Lector de libros y PDFs para Android.', lastmod: '2026-08-29' },
+      { path: '/spot', label: 'Spot', description: 'Producto de geocaching emocional.', lastmod: '2026-08-29' },
     ],
   },
   {
     label: 'Documentación de Spot',
     routes: [
-      { path: '/spot/privacy', label: 'Privacidad', description: 'Política de privacidad de Spot.' },
-      { path: '/spot/terms', label: 'Términos', description: 'Términos y condiciones de Spot.' },
-      { path: '/spot/versions', label: 'Versiones', description: 'Historial de versiones de Spot.' },
+      { path: '/spot/privacy', label: 'Privacidad', description: 'Política de privacidad de Spot.', lastmod: '2026-01-06' },
+      { path: '/spot/terms', label: 'Términos', description: 'Términos y condiciones de Spot.', lastmod: '2026-01-06' },
+      { path: '/spot/versions', label: 'Versiones', description: 'Historial de versiones de Spot.', lastmod: '2026-01-06' },
     ],
   },
   {
@@ -69,7 +74,8 @@ export const siteRouteGroups: SiteRouteGroup[] = [
   },
 ];
 
-export const sitemapRoutePaths = siteRouteGroups
+export const sitemapRoutes = siteRouteGroups
   .flatMap((group) => group.routes)
-  .filter((route) => route.includeInSitemap !== false)
-  .map((route) => route.path);
+  .filter((route) => route.includeInSitemap !== false);
+
+export const sitemapRoutePaths = sitemapRoutes.map((route) => route.path);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HalftoneDots } from '@paper-design/shaders-react';
 
 export type NavSectionKey = 'inicio' | 'trabajo' | 'bio' | 'override' | 'contacto';
@@ -101,10 +101,15 @@ function getTheme(): Theme {
 export default function NavCardDots({ section, imageSrc }: NavCardDotsProps) {
   const [theme, setTheme] = useState<Theme>('white');
   const [isDesktop, setIsDesktop] = useState(false);
+  const [snapshotUrl, setSnapshotUrl] = useState<string | null>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setTheme(getTheme());
-    const themeObserver = new MutationObserver(() => setTheme(getTheme()));
+    const themeObserver = new MutationObserver(() => {
+      setSnapshotUrl(null);
+      setTheme(getTheme());
+    });
     themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
@@ -118,31 +123,70 @@ export default function NavCardDots({ section, imageSrc }: NavCardDotsProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isDesktop || snapshotUrl) return undefined;
+
+    let cancelled = false;
+    let attempts = 0;
+
+    const tryCapture = () => {
+      if (cancelled) return;
+      const canvas = hostRef.current?.querySelector('canvas');
+      if (canvas && canvas.width > 0 && canvas.height > 0) {
+        try {
+          const dataUrl = canvas.toDataURL('image/png');
+          if (dataUrl.length > 1500) {
+            setSnapshotUrl(dataUrl);
+            return;
+          }
+        } catch {
+          return;
+        }
+      }
+      if (++attempts < 8) {
+        window.setTimeout(tryCapture, 160);
+      }
+    };
+
+    const timer = window.setTimeout(tryCapture, 220);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [isDesktop, theme, imageSrc, snapshotUrl]);
+
   if (!isDesktop) return null;
+
+  if (snapshotUrl) {
+    return <img src={snapshotUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />;
+  }
 
   const isBlack = theme === 'black';
   const resolvedImage = imageSrc && imageSrc.trim().length > 0 ? imageSrc : SECTION_ARTWORK[section];
 
   return (
-    <HalftoneDots
-      image={resolvedImage}
-      colorBack={isBlack ? '#0d0d0d' : '#f7f7f5'}
-      colorFront={isBlack ? '#f4f4ef' : '#111111'}
-      size={0.38}
-      radius={1.35}
-      contrast={0.62}
-      grid="hex"
-      type="classic"
-      originalColors={false}
-      inverted={false}
-      grainMixer={0.1}
-      grainOverlay={0.08}
-      grainSize={0.5}
-      fit="cover"
-      speed={0}
-      minPixelRatio={1}
-      maxPixelCount={250000}
-      style={{ width: '100%', height: '100%', display: 'block' }}
-    />
+    <div ref={hostRef} style={{ width: '100%', height: '100%' }}>
+      <HalftoneDots
+        image={resolvedImage}
+        colorBack={isBlack ? '#0d0d0d' : '#f7f7f5'}
+        colorFront={isBlack ? '#f4f4ef' : '#111111'}
+        size={0.38}
+        radius={1.35}
+        contrast={0.62}
+        grid="hex"
+        type="classic"
+        originalColors={false}
+        inverted={false}
+        grainMixer={0.1}
+        grainOverlay={0.08}
+        grainSize={0.5}
+        fit="cover"
+        speed={0}
+        minPixelRatio={1}
+        maxPixelCount={250000}
+        webGlContextAttributes={{ preserveDrawingBuffer: true }}
+        style={{ width: '100%', height: '100%', display: 'block' }}
+      />
+    </div>
   );
 }
